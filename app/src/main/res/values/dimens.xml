@@ -1,0 +1,23 @@
+<resources>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="text_item_height">48dp</dimen>
+    <dimen name="text_item_width">0dp</dimen>
+
+    <dimen name="title_padding">8dp</dimen>
+
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_width">0dp</dimen>
+
+    <dimen name="text_item_margin_horiz">4dp</dimen>
+    <dimen name="text_item_margin_vert">4dp</dimen>
+    <dimen name="text_item_padding_horiz">4dp</dimen>
+    <dimen name="text_item_padding_vert">4dp</dimen>
+
+    <dimen name="card_padding_horiz">4dp</dimen>
+    <dimen name="card_padding_vert">4dp</dimen>
+
+    <dimen name="card_margin_horiz">8dp</dimen>
+    <dimen name="card_margin_vert">16dp</dimen>
+</resources>

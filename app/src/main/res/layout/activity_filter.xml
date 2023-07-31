@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".filter">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+        android:layout_marginVertical="@dimen/text_item_margin_vert"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/selectDateFromButton"
+            android:layout_width="@dimen/text_item_width"
+            android:layout_height="@dimen/text_item_height"
+            android:layout_weight="1"
+            android:text="Button" />
+
+        <TextView
+            android:id="@+id/dateFromView"
+            android:layout_width="@dimen/text_item_width"
+            android:layout_height="@dimen/text_item_height"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+        android:layout_marginVertical="@dimen/text_item_margin_vert"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/selectDateToButton"
+            android:layout_width="@dimen/text_item_width"
+            android:layout_height="@dimen/text_item_height"
+            android:layout_weight="1"
+            android:text="Button" />
+
+        <TextView
+            android:id="@+id/dateToView"
+            android:layout_width="@dimen/text_item_width"
+            android:layout_height="@dimen/text_item_height"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/doFilterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/text_item_height"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+        android:layout_marginVertical="@dimen/text_item_margin_vert"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/button_do_filter" />
+
+</LinearLayout>

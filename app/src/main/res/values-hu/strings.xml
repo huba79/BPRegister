@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bibizz</string>
+    <string name="title_activity_bp_list">Vérnyomásadatok</string>
+    <string name="action_settings">Beállítások</string>
+    <string name="title_activity_filter">Keress!</string>
+    <string name="next">Következő</string>
+    <string name="previous">Előző</string>
+    <string name="greeting_message">Üdvözöl a várnyomás-regiszter! :)</string>
+    <string name="registration_card_title">Adja meg a vérnyomásértékeit!</string>
+    <string name="button_do_filter">Lássuk</string>
+    <string name="label_sistholic">Szisztolés</string>
+    <string name="label_diastholic">Diasztolés</string>
+    <string name="button_save">Mentsd le!</string>
+    <string name="button_exit">Kilépés</string>
+    <string name="datte_picker_button_text">Válassz dátumot!</string>
+    <string name="time_picker_button">Időpontot is!</string>
+</resources>
