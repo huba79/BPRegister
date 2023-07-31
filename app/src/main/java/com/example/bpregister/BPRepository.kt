@@ -1,12 +1,9 @@
 package com.example.bpregister
 
-import android.app.Application
 import android.content.Context
 import android.util.Log
 import java.io.File
 import java.io.FileInputStream
-import java.io.FileOutputStream
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -16,7 +13,6 @@ object BPRepository{
     lateinit var bpdatabase:File
 
     fun writeToFile(context:Context,data:BPItem){
-        var success:Boolean = true
         val folder = context.filesDir
         bpdatabase=File(folder,"bpDatabase.txt")
         if(!bpdatabase.exists()) {
