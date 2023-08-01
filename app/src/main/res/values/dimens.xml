@@ -10,14 +10,23 @@
     <dimen name="button_height">48dp</dimen>
     <dimen name="button_width">0dp</dimen>
 
-    <dimen name="text_item_margin_horiz">4dp</dimen>
-    <dimen name="text_item_margin_vert">4dp</dimen>
-    <dimen name="text_item_padding_horiz">4dp</dimen>
-    <dimen name="text_item_padding_vert">4dp</dimen>
+    <dimen name="inner_item_margin_horiz_short">4dp</dimen>
+    <dimen name="inner_item_margin_horiz_long">8dp</dimen>
+    <dimen name="inner_item_margin_vert_short">4dp</dimen>
+    <dimen name="inner_item_margin_vert_long">8dp</dimen>
+    <dimen name="inner_item_padding_horiz_short">4dp</dimen>
+    <dimen name="inner_item_padding_horiz_long">8dp</dimen>
+    <dimen name="inner_item_padding_vert_short">4dp</dimen>
+    <dimen name="inner_item_padding_vert_long">8dp</dimen>
 
-    <dimen name="card_padding_horiz">4dp</dimen>
-    <dimen name="card_padding_vert">4dp</dimen>
+    <dimen name="card_padding_horiz_short">4dp</dimen>
+    <dimen name="card_padding_horiz_long">8dp</dimen>
+    <dimen name="card_padding_vert_short">4dp</dimen>
+    <dimen name="card_padding_vert_long">8dp</dimen>
 
     <dimen name="card_margin_horiz">8dp</dimen>
-    <dimen name="card_margin_vert">16dp</dimen>
+    <dimen name="card_margin_vert">8dp</dimen>
+    <dimen name="card_title_margin_vert">16dp</dimen>
+    <dimen name="title_margin_horiz">8dp</dimen>
+    <dimen name="title_margin_vert">24dp</dimen>
 </resources>

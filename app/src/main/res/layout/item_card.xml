@@ -15,8 +15,8 @@
             android:id="@+id/sistholicView"
             android:layout_width="@dimen/text_item_width"
             android:layout_height="@dimen/text_item_height"
-            android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
-            android:layout_marginVertical="@dimen/text_item_margin_vert"
+            android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
+            android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
             android:layout_weight="3"
             android:text="TextView" />
 
@@ -26,8 +26,8 @@
             android:layout_height="@dimen/text_item_height"
             android:layout_gravity="center"
             android:layout_margin="0dp"
-            android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
-            android:layout_marginVertical="@dimen/text_item_margin_vert"
+            android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
+            android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
             android:layout_weight="1"
             android:gravity="center"
             android:lines="1"
@@ -39,8 +39,8 @@
             android:id="@+id/diastholicView"
             android:layout_width="@dimen/text_item_width"
             android:layout_height="@dimen/text_item_height"
-            android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
-            android:layout_marginVertical="@dimen/text_item_margin_vert"
+            android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
+            android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
             android:layout_weight="3"
             android:text="TextView" />
 
@@ -48,8 +48,8 @@
             android:id="@+id/timestampView"
             android:layout_width="@dimen/text_item_width"
             android:layout_height="@dimen/text_item_height"
-            android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
-            android:layout_marginVertical="@dimen/text_item_margin_vert"
+            android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
+            android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
             android:layout_weight="3"
             android:text="TextView" />
 
