@@ -13,6 +13,6 @@
     <string name="label_diastholic">Diasztolés</string>
     <string name="button_save">Mentsd le!</string>
     <string name="button_exit">Kilépés</string>
-    <string name="datte_picker_button_text">Válassz dátumot!</string>
+    <string name="date_picker_button_text">Válassz dátumot!</string>
     <string name="time_picker_button">Időpontot is!</string>
 </resources>

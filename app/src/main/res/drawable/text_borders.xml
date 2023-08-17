@@ -1,0 +1,6 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:radius="@dimen/item_corner_radius" />
+    <solid android:color="@color/accent" />
+
+</shape>

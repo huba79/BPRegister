@@ -137,8 +137,8 @@
     <string name="button_do_filter">Let\'s see them</string>
     <string name="label_sistholic">Sistholic</string>
     <string name="label_diastholic">Diastholic</string>
-    <string name="button_save">Save it!</string>
-    <string name="button_exit">Quit application</string>
-    <string name="datte_picker_button_text">Pick a date!</string>
+    <string name="button_save">Save</string>
+    <string name="button_exit">Quit</string>
+    <string name="date_picker_button_text">Pick a date!</string>
     <string name="time_picker_button">Pick a time!</string>
 </resources>

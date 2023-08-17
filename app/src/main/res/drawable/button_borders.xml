@@ -4,11 +4,11 @@
         android:bottomRightRadius="8dp"
         android:topLeftRadius="8dp"
         android:topRightRadius="8dp" />
-<!--    <solid android:color="#1271BB" />-->
+    <solid android:color="@color/button" />
 
     <stroke
-        android:width="5dp"
-        android:color="#1271BB" />
+        android:width="2dp"
+        android:color="@color/button" />
 
 <!--    <padding-->
 <!--        android:bottom="1dp"-->

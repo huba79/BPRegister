@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         var selectedDate = LocalDateTime.now()
 
         val pickedDateView = binding.selectedDateView
-        pickedDateView.text = "$year/${month+1}/$day"
+        datePickerButton.text = "$year/${month+1}/$day"
 
         val pickedTimeView = binding.selectedTimeView
         pickedTimeView.text = selectedDate.format(DateTimeFormatter.ofPattern("HH-mm"))
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 { view, pYear, pMonth, pDay ->
                     run {
                         Log.i("picker", "The selected date is: $pYear/${pMonth+1}/$pDay")
-                        pickedDateView.text = "$pYear/${pMonth+1}/$pDay"
+                        datePickerButton.text = "$pYear/${pMonth+1}/$pDay"
 
                         var sMonth =  "${pMonth+ 1}"
                         if((pMonth)<9) {sMonth = "0${pMonth+1}" }
