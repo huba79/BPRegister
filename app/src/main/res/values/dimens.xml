@@ -23,4 +23,9 @@
 
     <dimen name="item_corner_radius">4dp</dimen>
 
+    <dimen name="inner_item_margin_horiz_short">8dp</dimen>
+    <dimen name="inner_item_margin_vert_short">8dp</dimen>
+
+
+
 </resources>

@@ -143,4 +143,5 @@
     <string name="time_picker_button">Pick a time!</string>
     <string name="blood_pressure_values_saved_successfully">Blood pressure values saved successfully!</string>
     <string name="error_saving_data">Error saving data</string>
+    <string name="selected_time" translatable="false">%1$d : %2$d</string>
 </resources>

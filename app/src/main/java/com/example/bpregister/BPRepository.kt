@@ -2,9 +2,12 @@ package com.example.bpregister
 
 import android.content.Context
 import android.util.Log
+import com.example.bpregister.ui.BPItem
 import java.io.File
 import java.io.FileInputStream
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 object BPRepository{
@@ -12,7 +15,7 @@ object BPRepository{
     lateinit var input: FileInputStream
     lateinit var bpdatabase:File
 
-    fun writeToFile(context:Context,data:BPItem){
+    fun writeToFile(context:Context,data: BPItem){
         val folder = context.filesDir
         bpdatabase=File(folder,"bpDatabase.txt")
         if(!bpdatabase.exists()) {
@@ -34,7 +37,9 @@ object BPRepository{
             for (line in lines){
                 val properties = line.split("/")
                 readData = BPItem(Integer.parseInt(properties[0]),Integer.parseInt(properties[1]),
-                    LocalDateTime.parse(properties[2], DateTimeFormatter.ofPattern("yyyy-MM-DD H-M-S")))
+                    LocalDateTime.parse(properties[2],DateTimeFormatter.ofPattern("yyyy-mm-dd")),
+                    LocalTime.parse("HH:MM")
+                )
                 Log.d("readFromFile",readData.toString())
                 bpItems.add(readData)
             }
@@ -50,7 +55,7 @@ object BPRepository{
 
         if(criteria.dateFrom!=null&&criteria.dateTo!=null) {
             for(item in list){
-                if(!(item.timestamp>=criteria.dateFrom&&item.timestamp<=criteria.dateTo)){
+                if(!(item.localDate>=criteria.dateFrom && item.localDate<=criteria.dateTo)){
                     list.remove(item)
                 }
             }
@@ -58,7 +63,7 @@ object BPRepository{
         }
         if(criteria.dateFrom!=null&&criteria.dateTo==null) {
             for(item in list){
-                if(item.timestamp<criteria.dateFrom){
+                if(item.localDate<criteria.dateFrom){
                     list.remove(item)
                 }
             }
@@ -67,7 +72,7 @@ object BPRepository{
 
         if(criteria.dateFrom==null&&criteria.dateTo!=null) {
             for(item in list){
-                if(item.timestamp>criteria.dateTo){
+                if(item.localDate>criteria.dateTo){
                     list.remove(item)
                 }
             }
