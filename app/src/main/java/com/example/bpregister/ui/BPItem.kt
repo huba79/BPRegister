@@ -1,4 +1,4 @@
-package com.example.bpregister
+package com.example.bpregister.ui
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

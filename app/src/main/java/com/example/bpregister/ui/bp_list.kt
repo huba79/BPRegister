@@ -1,4 +1,4 @@
-package com.example.bpregister
+package com.example.bpregister.ui
 
 import android.os.Bundle
 import com.google.android.material.appbar.CollapsingToolbarLayout

@@ -1,4 +1,4 @@
-package com.example.bpregister
+package com.example.bpregister.ui
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -8,13 +8,15 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
+import com.example.bpregister.BPRepository
+import com.example.bpregister.R
 import com.example.bpregister.databinding.ActivityMainBinding
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
-    lateinit var blodPressureDataset :BPItem
+    lateinit var blodPressureDataset : BPItem
     val repo = BPRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                     LocalDateTime.parse("$sDate $sTime", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
                 )
                 try{
-                    repo.writeToFile(this@MainActivity,blodPressureDataset)
+                    BPRepository.writeToFile(this@MainActivity, blodPressureDataset)
                     Toast
                         .makeText(this@MainActivity,
                             getString(R.string.blood_pressure_values_saved_successfully),Toast.LENGTH_SHORT)
