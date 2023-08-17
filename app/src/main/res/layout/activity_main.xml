@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal|center_vertical"
-    android:layout_marginVertical="@dimen/inner_item_margin_vert_long"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -14,8 +13,8 @@
         android:id="@+id/greetingsView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/text_item_height"
-        android:layout_marginHorizontal="@dimen/title_margin_horiz"
-        android:layout_marginVertical="@dimen/title_margin_vert"
+        android:layout_marginHorizontal="@dimen/card_margin_horiz"
+        android:layout_marginVertical="@dimen/card_margin_vert"
         android:layout_weight="1"
         android:gravity="center|center_vertical"
         android:text="@string/greeting_message"
@@ -28,42 +27,43 @@
         android:layout_marginHorizontal="@dimen/card_margin_horiz"
         android:layout_marginVertical="@dimen/card_margin_vert"
         android:layout_weight="1"
-        android:paddingHorizontal="@dimen/card_padding_horiz_short"
-        android:paddingVertical="@dimen/card_padding_vert_short">
+        android:paddingHorizontal="@dimen/card_padding_horiz"
+        android:paddingVertical="@dimen/card_padding_vert">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/cardTitleWiew2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/card_margin_horiz"
                 android:layout_marginVertical="@dimen/card_margin_vert"
                 android:gravity="center"
                 android:text="@string/registration_card_title"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:typeface="sans" />
 
             <LinearLayout
                 android:id="@+id/labelLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/inner_item_margin_vert_long"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/sistolicLabel"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/text_item_height"
-                    android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
+                    android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+                    android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="1"
                     android:gravity="start|center_vertical"
-                    android:paddingHorizontal="@dimen/inner_item_padding_horiz_long"
+                    android:paddingHorizontal="@dimen/text_item_padding_horiz"
                     android:text="@string/label_sistholic"
-                    android:textSize="@dimen/item_text_size"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:typeface="sans" />
 
@@ -71,13 +71,13 @@
                     android:id="@+id/diastholicLabel"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/text_item_height"
-                    android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
+                    android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+                    android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="1"
                     android:gravity="right|center_vertical"
-                    android:paddingHorizontal="@dimen/inner_item_padding_horiz_long"
+                    android:paddingHorizontal="@dimen/text_item_padding_horiz"
                     android:text="@string/label_diastholic"
-                    android:textSize="@dimen/item_text_size"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     android:typeface="sans" />
             </LinearLayout>
@@ -86,23 +86,25 @@
                 android:id="@+id/editLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/inner_item_margin_vert_long"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
                 <EditText
                     android:id="@+id/sistolicEdit"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
+                    android:layout_height="@dimen/text_item_height"
+                    android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+                    android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="3"
-                    android:background="@drawable/input_borders"
+                    android:background="@drawable/text_borders"
                     android:ems="10"
                     android:gravity="center"
                     android:inputType="number"
-                    android:textSize="@dimen/item_text_size"
-                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:typeface="sans" />
 
                 <TextView
@@ -110,30 +112,30 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/text_item_height"
                     android:layout_gravity="center"
-                    android:layout_margin="0dp"
-                    android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
+                    android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+                    android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:includeFontPadding="true"
                     android:lines="1"
                     android:text="/"
-                    android:textSize="20sp"
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     android:typeface="sans" />
 
                 <EditText
                     android:id="@+id/diastholicEdit"
                     android:layout_width="0dp"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
+                    android:layout_height="@dimen/text_item_height"
+                    android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+                    android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="3"
-                    android:background="@drawable/input_borders"
+                    android:background="@drawable/text_borders"
                     android:ems="10"
                     android:gravity="center"
                     android:inputType="number"
-                    android:textSize="@dimen/item_text_size"
-                    android:textStyle="normal"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:typeface="sans" />
             </LinearLayout>
 
@@ -141,35 +143,32 @@
                 android:id="@+id/datePickerLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/inner_item_margin_vert_long"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/selectedDateView"
                     android:layout_width="@dimen/text_item_width"
-                    android:layout_height="@dimen/button_height"
+                    android:layout_height="@dimen/text_item_height"
                     android:layout_gravity="start|center_vertical"
-                    android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
+                    android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+                    android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="1"
-                    android:background="@drawable/input_borders"
-                    android:gravity="center"
-                    android:textSize="@dimen/item_text_size"
-                    android:textStyle="normal" />
+                    android:background="@drawable/text_borders"
+                    android:gravity="center" />
 
                 <Button
                     android:id="@+id/datePickerButton"
                     android:layout_width="@dimen/text_item_width"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
+                    android:layout_height="@dimen/text_item_height"
+                    android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+                    android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="1"
                     android:background="@drawable/button_borders"
-                    android:text="@string/datte_picker_button_text"
-                    android:textSize="@dimen/item_text_size"
-                    android:textStyle="normal" />
+                    android:text="@string/date_picker_button_text" />
 
             </LinearLayout>
 
@@ -177,34 +176,32 @@
                 android:id="@+id/timePickerLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/inner_item_margin_vert_long"
-                android:orientation="horizontal">
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/selectedTimeView"
                     android:layout_width="@dimen/text_item_width"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
+                    android:layout_height="@dimen/text_item_height"
+                    android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+                    android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="1"
-                    android:background="@drawable/input_borders"
+                    android:background="@drawable/text_borders"
                     android:gravity="center"
-                    android:text="TextView"
-                    android:textSize="@dimen/item_text_size"
-                    android:textStyle="normal" />
+                    android:text="HH:MM:SS" />
 
                 <Button
                     android:id="@+id/timePickerButton"
                     android:layout_width="@dimen/text_item_width"
-                    android:layout_height="@dimen/button_height"
-                    android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
+                    android:layout_height="@dimen/text_item_height"
+                    android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
+                    android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="1"
                     android:background="@drawable/button_borders"
                     android:gravity="center"
-                    android:text="@string/time_picker_button"
-                    android:textSize="@dimen/item_text_size"
-                    android:textStyle="normal" />
+                    android:text="@string/time_picker_button" />
 
             </LinearLayout>
 
@@ -216,15 +213,35 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/exitButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_gravity="center|center_horizontal"
+                    android:layout_marginHorizontal="@dimen/card_margin_horiz"
+                    android:layout_marginVertical="@dimen/card_margin_vert"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_borders"
+                    android:text="@string/button_exit" />
+
+                <Button
+                    android:id="@+id/searchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_borders"
+                    android:text="@android:string/search_go" />
+
+                <Button
                     android:id="@+id/saveButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="60dp"
+                    android:layout_height="@dimen/button_height"
                     android:layout_marginHorizontal="@dimen/card_margin_horiz"
-                    android:layout_marginVertical="36dp"
+                    android:layout_marginVertical="16dp"
+                    android:layout_weight="1"
                     android:background="@drawable/button_borders"
                     android:gravity="center"
                     android:text="@string/button_save"
-                    android:textSize="@dimen/title_font_size"
                     android:textStyle="bold"
                     android:typeface="sans" />
 
@@ -232,43 +249,5 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/exitButton"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/button_height"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginHorizontal="@dimen/card_margin_horiz"
-            android:layout_marginVertical="@dimen/card_margin_vert"
-            android:layout_weight="1"
-            android:background="@drawable/button_borders"
-            android:text="@string/button_exit"
-            android:textSize="@dimen/item_text_size"
-            android:textStyle="normal" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button"
-            android:visibility="invisible" />
-
-        <ImageButton
-            android:id="@+id/searchButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginHorizontal="@dimen/card_margin_horiz"
-            android:layout_marginVertical="@dimen/card_margin_vert"
-            android:layout_weight="1"
-            android:src="@android:drawable/ic_menu_zoom" />
-    </LinearLayout>
 
 </LinearLayout>
