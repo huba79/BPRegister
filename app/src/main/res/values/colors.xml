@@ -2,6 +2,18 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="accent">#FFDDEEDD</color>
-    <color name="button">#2266CC22</color>
+
+    <color name="bp_primary">#3F51B5</color>
+    <color name="bp_primary_variant">#03A9F4</color>
+    <color name="bp_text_on_primary">#FFEEEEEE</color>
+    <color name="bp_seconday">#009688</color>
+    <color name="bp_secondary_variant">#8BC34A</color>
+    <color name="bp_color_on_secondary">#FFEEEEEE</color>
+    <color name="bp_surface">#03A9F4</color>
+    <color name="bp_text_on_surface">#FFEEEEEE</color>
+<!--    <color name="bp_text_on_surface">#66222222</color>-->
+    <color name="bp_background">#66DDDDDD</color>
+    <color name="bp_text_on_background">#FFEEEEEE</color>
+    <color name="bp_error">#99DD4444</color>
+    <color name="bp_textOnError">#FFEEEEEE</color>
 </resources>

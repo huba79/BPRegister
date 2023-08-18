@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
@@ -14,42 +13,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/card_margin_horiz"
-        android:layout_marginVertical="24dp"
+        android:layout_marginVertical="@dimen/card_margin_vert"
         android:layout_weight="1"
         android:gravity="center|center_vertical"
         android:text="@string/greeting_message"
-        android:textSize="24sp"
+        android:textSize="@dimen/font_size_title"
         android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/card_margin_horiz"
-        android:layout_marginVertical="24dp"
-        android:layout_weight="1"
+        android:layout_marginVertical="@dimen/card_margin_vert"
+        android:layout_weight="4"
         android:paddingHorizontal="@dimen/card_padding_horiz"
         android:paddingVertical="@dimen/card_padding_vert">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/cardTitleWiew2"
+                style="@style/MaterialAlertDialog.Material3.Title.Panel.CenterStacked"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/card_margin_horiz"
                 android:layout_marginVertical="@dimen/card_margin_vert"
                 android:gravity="center"
                 android:text="@string/registration_card_title"
-                android:textSize="24sp"
-                android:typeface="sans" />
+                android:textSize="@dimen/font_size_large" />
 
             <LinearLayout
                 android:id="@+id/labelLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
                 android:orientation="horizontal"
                 android:padding="8dp">
 
@@ -63,7 +65,7 @@
                     android:gravity="start|center_vertical"
                     android:paddingHorizontal="@dimen/text_item_padding_horiz"
                     android:text="@string/label_sistholic"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/font_size_large"
                     android:textStyle="bold"
                     android:typeface="sans" />
 
@@ -74,10 +76,10 @@
                     android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
                     android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="1"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end|center_vertical"
                     android:paddingHorizontal="@dimen/text_item_padding_horiz"
                     android:text="@string/label_diastholic"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/font_size_large"
                     android:textStyle="bold"
                     android:typeface="sans" />
             </LinearLayout>
@@ -87,6 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -94,16 +97,16 @@
 
                 <EditText
                     android:id="@+id/sistolicEdit"
+                    style="@android:style/Widget.Holo.EditText"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/text_item_height"
                     android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
                     android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="3"
-                    android:background="@drawable/text_borders"
                     android:ems="10"
                     android:gravity="center"
                     android:inputType="number"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/font_size_large"
                     android:textStyle="bold"
                     android:typeface="sans" />
 
@@ -118,23 +121,23 @@
                     android:gravity="center"
                     android:includeFontPadding="true"
                     android:lines="1"
-                    android:text="/"
+                    android:text="@string/visual_separator"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     android:typeface="sans" />
 
                 <EditText
                     android:id="@+id/diastholicEdit"
+                    style="@android:style/Widget.Holo.EditText"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/text_item_height"
                     android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
                     android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="3"
-                    android:background="@drawable/text_borders"
                     android:ems="10"
                     android:gravity="center"
                     android:inputType="number"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/font_size_large"
                     android:textStyle="bold"
                     android:typeface="sans" />
             </LinearLayout>
@@ -144,6 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_margin="8dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -152,23 +156,21 @@
                 <Button
                     android:id="@+id/datePickerButton"
                     android:layout_width="@dimen/text_item_width"
-                    android:layout_height="@dimen/text_item_height"
+                    android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
                     android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="1"
-                    android:background="@drawable/button_borders"
-                    android:text="@string/date_picker_button_text" />
+                    android:textSize="@dimen/font_size_normal" />
 
                 <Button
                     android:id="@+id/timePickerButton"
                     android:layout_width="@dimen/text_item_width"
-                    android:layout_height="@dimen/text_item_height"
+                    android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
                     android:layout_marginVertical="@dimen/text_item_margin_vert"
                     android:layout_weight="1"
-                    android:background="@drawable/button_borders"
                     android:gravity="center"
-                    android:text="@string/time_picker_button" />
+                    android:textSize="@dimen/font_size_normal" />
 
             </LinearLayout>
 
@@ -178,42 +180,51 @@
 
     <LinearLayout
         android:id="@+id/buttonsLayout"
+        style="?android:attr/buttonBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:layout_marginVertical="24dp"
+        android:layout_weight="2"
         android:gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/exitButton"
+            style="?android:attr/buttonBarNegativeButtonStyle"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="wrap_content"
             android:layout_gravity="center|center_horizontal"
             android:layout_marginHorizontal="@dimen/card_margin_horiz"
             android:layout_marginVertical="@dimen/card_margin_vert"
             android:layout_weight="1"
             android:background="@drawable/button_borders"
-            android:text="@string/button_exit" />
+            android:text="@string/button_exit"
+            android:textSize="@dimen/font_size_large" />
 
         <Button
             android:id="@+id/searchButton"
+            style="?android:attr/buttonBarPositiveButtonStyle"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@drawable/button_borders"
-            android:text="@android:string/search_go" />
+            android:text="@android:string/search_go"
+            android:textSize="@dimen/font_size_large" />
 
         <Button
             android:id="@+id/saveButton"
+            style="?android:attr/buttonBarPositiveButtonStyle"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/card_margin_horiz"
             android:layout_marginVertical="16dp"
             android:layout_weight="1"
             android:background="@drawable/button_borders"
             android:gravity="center"
             android:text="@string/button_save"
+            android:textSize="@dimen/font_size_large"
             android:textStyle="bold"
             android:typeface="sans" />
 
