@@ -3,23 +3,22 @@ package com.example.bpregister
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.icu.util.Calendar
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.bpregister.databinding.ActivityMainBinding
 import com.example.bpregister.ui.BPItem
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
+
 class MainActivity : AppCompatActivity() {
-    lateinit var binding : ActivityMainBinding
-    lateinit var blodPressureDataset : BPItem
-    val repo = BPRepository
+    private lateinit var binding : ActivityMainBinding
+    private lateinit var blodPressureDataset : BPItem
+    private val repo = BPRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,23 +28,23 @@ class MainActivity : AppCompatActivity() {
         val timePickerButton = binding.timePickerButton
 
         val calendar = Calendar.getInstance()
-        var year = calendar.get(Calendar.YEAR)
-        var month = calendar.get(Calendar.MONTH)
-        var day = calendar.get(Calendar.DAY_OF_MONTH)
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         var selectedDate = LocalDateTime.now()
         var selectedTime = LocalTime.now()
 
-        datePickerButton.text = "$year/${month+1}/$day"
+        datePickerButton.text = getString(R.string.date_visual_formatter, year, month + 1, day)
 
         timePickerButton.text = selectedDate.format(DateTimeFormatter.ofPattern("HH : mm"))
 
         datePickerButton.setOnClickListener {
             val pickerDialog = DatePickerDialog(this,
-                { view, pYear, pMonth, pDay ->
+                { _, pYear, pMonth, pDay ->
                     run {
                         Log.i("picker", "The selected date is: $pYear-${pMonth+1}-$pDay")
-                        datePickerButton.text = "$pYear-${pMonth+1}-$pDay"
+                        datePickerButton.text = getString(R.string.date_visual_formatter, year, month + 1, day)
 
                         var sMonth =  "${pMonth+ 1}"
                         if((pMonth)<9) {sMonth = "0${pMonth+1}" }
@@ -54,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                         if((pDay)<9) {sDay = "0${pDay}" }
 
                         selectedDate = LocalDateTime.parse("$pYear-$sMonth-${sDay} 00:00",DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
-                        Log.i("picker", "The date to save is: $pYear-${sMonth}-$sDay")
+                        Log.i("picker", "The date to save is: ${getString(R.string.date_visual_formatter, year, month + 1, day)}")
                     }
                 }, year, month, day
             )
@@ -70,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 { _,
                   pHour,
                   pMinute -> {
-                    timePickerButton.text = getString(R.string.selected_time, pHour, pMinute)
+                    timePickerButton.text = getString(R.string.time_visual_formatter, pHour, pMinute)
                     selectedTime=LocalTime.of(pHour,pMinute)
                   }
                 },
