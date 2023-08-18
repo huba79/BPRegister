@@ -146,4 +146,5 @@
     <string name="time_visual_formatter" translatable="false">%1$d : %2$d</string>
     <string name="date_visual_formatter" translatable="false">%1$d/%2$d/%3$d</string>
     <string name="visual_separator">/</string>
+    <string name="search_button_caption">Search</string>
 </resources>
