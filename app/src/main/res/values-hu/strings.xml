@@ -6,8 +6,8 @@
     <string name="title_activity_filter">Keress!</string>
     <string name="next">Következő</string>
     <string name="previous">Előző</string>
-    <string name="greeting_message">Üdvözöl a várnyomás-regiszter! :)</string>
-    <string name="registration_card_title">Adja meg a vérnyomásértékeit!</string>
+    <string name="greeting_message">Vérnyomás-regiszter</string>
+    <string name="registration_card_title">Adja meg a vérnyomásértékeit</string>
     <string name="button_do_filter">Lássuk</string>
     <string name="label_sistholic">Szisztolés</string>
     <string name="label_diastholic">Diasztolés</string>
@@ -16,6 +16,6 @@
     <string name="time_picker_button_caption">Válassz időpontot!</string>
     <string name="blood_pressure_values_saved_successfully">Adataidat sikeresen mentettük!</string>
     <string name="error_saving_data">Mentési hiba! Sajnáljuk…</string>
-    <string name="visual_separator">/</string>
     <string name="date_picker_button_caption">Válassz dátumot!</string>
+    <string name="search_button_caption">Keresés</string>
 </resources>

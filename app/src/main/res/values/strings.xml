@@ -132,8 +132,8 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="greeting_message">Mini blood pressure register</string>
-    <string name="registration_card_title">Please enter your current blood pressure values!</string>
+    <string name="greeting_message">Bibizz blood pressure register</string>
+    <string name="registration_card_title">Enter your blood pressure reading</string>
     <string name="button_do_filter">Let\'s see them</string>
     <string name="label_sistholic">Sistholic</string>
     <string name="label_diastholic">Diastholic</string>
@@ -145,5 +145,6 @@
     <string name="error_saving_data">Error saving data</string>
     <string name="time_visual_formatter" translatable="false">%1$d : %2$d</string>
     <string name="date_visual_formatter" translatable="false">%1$d/%2$d/%3$d</string>
-    <string name="visual_separator">/</string>
+    <string name="visual_separator" translatable="false">/</string>
+    <string name="search_button_caption">Search</string>
 </resources>
