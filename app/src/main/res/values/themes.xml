@@ -1,19 +1,27 @@
 <resources>
-    <!-- Base application theme. -->
+    <!-- Light theme. -->
     <style name="Base.Theme.BPRegister" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/bp_primary</item>
-        <item name="colorPrimaryVariant">@color/bp_primary_variant</item>
-        <item name="colorOnPrimary">@color/bp_text_on_primary</item>
-        <item name="colorSecondary">@color/bp_seconday</item>
-        <item name="colorSecondaryVariant">@color/bp_secondary_variant</item>
-        <item name="colorOnSecondary">@color/bp_color_on_secondary</item>
-        <item name="colorSurface">@color/bp_surface</item>
-        <item name="colorOnSurface">@color/bp_text_on_surface</item>
-        <item name="colorBackgroundFloating">@color/bp_background</item>
-        <item name="colorOnBackground">@color/bp_text_on_background</item>
-        <item name="colorError">@color/bp_error</item>
-        <item name="colorOnError">@color/bp_textOnError</item>
+        <item name="colorPrimary">@color/material_dynamic_primary10</item>
+        <item name="colorPrimaryVariant">@color/material_dynamic_primary30</item>
+        <item name="colorOnPrimary">@color/material_dynamic_primary90</item>
+
+        <item name="colorSecondary">@color/material_dynamic_secondary10</item>
+        <item name="colorSecondaryVariant">@color/material_dynamic_secondary30</item>
+        <item name="colorOnSecondary">@color/material_dynamic_secondary90</item>
+
+        <item name="colorSurfaceContainerLowest">@color/material_dynamic_neutral90</item>
+        <item name="colorSurface">@color/material_dynamic_neutral70</item>
+        <item name="colorOnSurface">@color/material_dynamic_neutral10</item>
+
+        <item name="colorOnContainer">@color/material_dynamic_tertiary20</item>
+        <item name="colorContainer">@color/material_dynamic_tertiary80</item>
+
+        <item name="colorBackgroundFloating">@color/material_dynamic_tertiary50</item>
+        <item name="colorOnBackground">@color/material_dynamic_secondary80</item>
+
+        <item name="colorError">@color/design_default_color_error</item>
+        <item name="colorOnError">@color/material_dynamic_primary90</item>
     </style>
 
     <style name="Theme.BPRegister" parent="Base.Theme.BPRegister" />
@@ -23,7 +31,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.BPRegister.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.BPRegister.AppBarOverlay" parent="ThemeOverlay.Material3.DynamicColors.Light" />
 
-    <style name="Theme.BPRegister.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.BPRegister.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
 </resources>

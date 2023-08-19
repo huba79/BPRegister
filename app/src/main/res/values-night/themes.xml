@@ -1,7 +1,36 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.BPRegister" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<resources>
+    <!-- Night theme. -->
+    <style name="Base.Theme.BPRegister" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/material_dynamic_primary10</item>
+        <item name="colorPrimaryVariant">@color/material_dynamic_primary30</item>
+        <item name="colorOnPrimary">@color/material_dynamic_primary90</item>
+
+        <item name="colorSecondary">@color/material_dynamic_secondary10</item>
+        <item name="colorSecondaryVariant">@color/material_dynamic_secondary30</item>
+        <item name="colorOnSecondary">@color/material_dynamic_secondary90</item>
+
+        <item name="colorSurfaceContainerLowest">@color/material_dynamic_neutral90</item>
+        <item name="colorSurface">@color/material_dynamic_neutral70</item>
+        <item name="colorOnSurface">@color/material_dynamic_neutral10</item>
+
+        <item name="colorOnContainer">@color/material_dynamic_tertiary20</item>
+        <item name="colorContainer">@color/material_dynamic_tertiary80</item>
+
+        <item name="colorBackgroundFloating">@color/material_dynamic_tertiary50</item>
+        <item name="colorOnBackground">@color/material_dynamic_secondary80</item>
+
+        <item name="colorError">@color/design_default_color_error</item>
+        <item name="colorOnError">@color/material_dynamic_primary90</item>
     </style>
+
+    <style name="Theme.BPRegister" parent="Base.Theme.BPRegister" />
+
+    <style name="Theme.BPRegister.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.BPRegister.AppBarOverlay" parent="ThemeOverlay.Material3.DynamicColors.Dark" />
+
+    <style name="Theme.BPRegister.PopupOverlay" parent="ThemeOverlay.Material3.Dark" />
 </resources>

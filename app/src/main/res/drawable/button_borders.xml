@@ -8,7 +8,7 @@
 
     <stroke
         android:width="2dp"
-        android:color="@color/bp_background" />
+        android:color="@color/material_dynamic_tertiary80" />
 
 <!--    <padding-->
 <!--        android:bottom="1dp"-->

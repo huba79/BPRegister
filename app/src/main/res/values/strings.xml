@@ -147,4 +147,6 @@
     <string name="date_visual_formatter" translatable="false">%1$d/%2$d/%3$d</string>
     <string name="visual_separator" translatable="false">/</string>
     <string name="search_button_caption">Search</string>
+    <string name="sistholic_autofill_hint">Higher value goes here</string>
+    <string name="diastholic_autofill_hint">Lower value goes here</string>
 </resources>

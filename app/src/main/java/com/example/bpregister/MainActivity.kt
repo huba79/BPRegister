@@ -14,7 +14,6 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private lateinit var blodPressureDataset : BPItem
@@ -31,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+
 
         var selectedDate = LocalDateTime.now()
         var selectedTime = LocalTime.now()
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                         var sMonth =  "${pMonth+ 1}"
                         if((pMonth)<9) {sMonth = "0${pMonth+1}" }
 
-                        var sDay = "${pDay}"
+                        var sDay = "$pDay"
                         if((pDay)<9) {sDay = "0${pDay}" }
 
                         selectedDate = LocalDateTime.parse("$pYear-$sMonth-${sDay} 00:00",DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
@@ -83,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
         saveButton.setOnClickListener{
             if(formDataIsValid()) {
-                blodPressureDataset = BPItem( Integer.parseInt(binding.sistolicEdit.text.toString()),
+                blodPressureDataset = BPItem( Integer.parseInt(binding.sistholicEdit.text.toString()),
                     Integer.parseInt(binding.diastholicEdit.text.toString()),
                     selectedDate, selectedTime)
                 repo.writeToFile(this@MainActivity,blodPressureDataset)
@@ -99,16 +100,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun formDataIsValid(): Boolean {
-        return !(binding.sistolicEdit.text.isBlank()
+        return !(binding.sistholicEdit.text.isBlank()
                 ||binding.diastholicEdit.text.isBlank()
                 ||binding.datePickerButton.text.isBlank()
                 ||binding.timePickerButton.text.isBlank())
     }
 
     private fun resetCardData(){
-        binding.sistolicEdit.text.clear()
+        val calendar = Calendar.getInstance()
+        binding.sistholicEdit.text.clear()
         binding.diastholicEdit.text.clear()
-        binding.datePickerButton.text=getText(R.string.date_picker_button_caption)
-        binding.timePickerButton.text=getText(R.string.time_picker_button_caption)
+        binding.datePickerButton.text= getString(R.string.date_visual_formatter, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+ 1, calendar.get(Calendar.DAY_OF_MONTH)) //getText(R.string.date_picker_button_caption)
+        binding.timePickerButton.text=getString(R.string.time_visual_formatter,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE))
     }
 }
