@@ -18,4 +18,6 @@
     <string name="error_saving_data">Mentési hiba! Sajnáljuk…</string>
     <string name="date_picker_button_caption">Válassz dátumot!</string>
     <string name="search_button_caption">Keresés</string>
+    <string name="sistholic_autofill_hint">Magasabb érték</string>
+    <string name="diastholic_autofill_hint">Alacsonyabb érték</string>
 </resources>

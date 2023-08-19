@@ -23,7 +23,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.BPRegister.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.BPRegister.AppBarOverlay" parent="ThemeOverlay.Material3.BottomAppBar" />
 
-    <style name="Theme.BPRegister.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.BPRegister.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
 </resources>
