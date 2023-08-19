@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bibizz</string>
+    <string name="app_name">Bibizz BP register</string>
     <string name="title_activity_bp_list">Blood pressure hirstorical data</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_filter">Find what you need</string>

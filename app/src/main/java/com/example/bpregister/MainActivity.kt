@@ -97,6 +97,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.exitButton.setOnClickListener{
+            finish()
+        }
+
     }
 
     private fun formDataIsValid(): Boolean {
@@ -113,4 +117,5 @@ class MainActivity : AppCompatActivity() {
         binding.datePickerButton.text= getString(R.string.date_visual_formatter, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+ 1, calendar.get(Calendar.DAY_OF_MONTH)) //getText(R.string.date_picker_button_caption)
         binding.timePickerButton.text=getString(R.string.time_visual_formatter,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE))
     }
+
 }
