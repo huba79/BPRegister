@@ -11,9 +11,10 @@ import com.example.bpregister.databinding.ActivityFilterBinding
 import com.example.bpregister.domain.BPItem
 import com.example.bpregister.domain.BPRepository
 import com.example.bpregister.domain.Criteria
+import com.example.bpregister.utils.DateUtils
 import java.io.Serializable
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+
 class FilterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFilterBinding
@@ -54,8 +55,8 @@ class FilterActivity : AppCompatActivity() {
             val pickerDialog = DatePickerDialog(this,
                 { _, pYear, pMonth, pDay ->
                     run {
-                        dateFromButton.text = toDisplayableDate(pYear,pMonth,pDay)
-                        criteria.dateFrom=captionToDate(toDisplayableDate(pYear,pMonth,pDay))
+                        dateFromButton.text = DateUtils.toDisplayableDate(pYear,pMonth,pDay)
+                        criteria.dateFrom=LocalDateTime.of(pYear,pMonth,pDay,0,0)
                     }
                 }, defaultFromYear, defaultFromMonth, defaultFromDay
             )
@@ -66,8 +67,8 @@ class FilterActivity : AppCompatActivity() {
             val pickerDialog = DatePickerDialog(this,
                 { _, pYear, pMonth, pDay ->
                     run {
-                        dateToButton.text = toDisplayableDate(pYear,pMonth,pDay)
-                        criteria.dateTo=captionToDate(toDisplayableDate(pYear,pMonth,pDay))
+                        dateToButton.text = DateUtils.toDisplayableDate(pYear,pMonth,pDay)
+                        criteria.dateTo=LocalDateTime.of(pYear,pMonth,pDay,0,0)
                     }
                 }, defaultToYear, defaultToMonth, defaultToDay
             )
@@ -76,12 +77,15 @@ class FilterActivity : AppCompatActivity() {
 
         binding.doFilterButton.setOnClickListener {
             results = BPRepository.readFromFile(applicationContext)
-            if(criteria.dateFrom!=null && criteria.dateTo!=null
-                && criteria.dateFrom as LocalDateTime >criteria.dateTo as LocalDateTime) {
-                invertCriteria(criteria)
+            if(criteria.dateFrom!=null && criteria.dateTo!=null) {
+                if(criteria.dateFrom!!.isAfter(criteria.dateTo!!)   ) {
+                    Log.d("date","normalizing criteria...")
+                    criteria.normalize()
+                }
+
             }
             val filteredResults = BPRepository.filterResults(results, criteria)
-            val intent = Intent(this@FilterActivity,ResultList::class.java)
+            val intent = Intent(this@FilterActivity,ResultListActivity::class.java)
             intent.putExtra("results", filteredResults as Serializable?)
         }
 
@@ -89,31 +93,5 @@ class FilterActivity : AppCompatActivity() {
 
     }
 
-    private fun captionToDate(text:String):LocalDateTime?{
-        return try{
-            LocalDateTime.parse(text,DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-        } catch (e:Exception){
-            null
-        }
-    }
 
-    private fun invertCriteria(criteria:Criteria):Criteria {
-        val temp = criteria.dateFrom
-        criteria.dateFrom=criteria.dateTo
-        criteria.dateTo = temp
-        return criteria
-    }
-    private fun toDisplayableDate(year:Int,month:Int,day:Int):String{
-        var sMonth =  "${month+ 1}"
-        var sDay = "$day"
-
-        if((month)<9) {sMonth = "0${month+1}" }
-        if((day)<10) {sDay = "0${day}" }
-
-        return "${year}-${sMonth}-${sDay}"
-    }
-
-    private fun toLocalDateTime(year:Int, month:Int,day:Int):LocalDateTime{
-        return  LocalDateTime.of(year, month, day, 0,0,0)
-    }
 }

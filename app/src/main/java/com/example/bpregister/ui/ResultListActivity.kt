@@ -1,12 +1,11 @@
 package com.example.bpregister.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bpregister.databinding.ActivityBpListBinding
 import com.example.bpregister.domain.BPItem
 
-class ResultList : AppCompatActivity() {
+class ResultListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBpListBinding
 

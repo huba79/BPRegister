@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.bpregister.databinding.ActivityMainBinding
 import com.example.bpregister.domain.BPItem
 import com.example.bpregister.domain.BPRepository
+import com.example.bpregister.utils.DateUtils
 import com.example.bpregister.ui.FilterActivity
 import java.time.LocalDateTime
 import java.time.LocalTime
@@ -40,24 +41,15 @@ class MainActivity : AppCompatActivity() {
         var selectedTime = LocalTime.now()
 
         datePickerButton.text = getString(R.string.date_visual_formatter, year, month + 1, day)
-
-        timePickerButton.text = selectedDate.format(DateTimeFormatter.ofPattern("HH : mm"))
+        timePickerButton.text = selectedDate.format(DateTimeFormatter.ofPattern("HH:mm"))
 
         datePickerButton.setOnClickListener {
             val pickerDialog = DatePickerDialog(this,
                 { _, pYear, pMonth, pDay ->
                     run {
-                        Log.i("picker", "The selected date is: $pYear-${pMonth+1}-$pDay")
-                        datePickerButton.text = getString(R.string.date_visual_formatter, year, month + 1, day)
-
-                        var sMonth =  "${pMonth+ 1}"
-                        if((pMonth)<9) {sMonth = "0${pMonth+1}" }
-
-                        var sDay = "$pDay"
-                        if((pDay)<10) {sDay = "0${pDay}" }
-
-                        selectedDate = LocalDateTime.parse("$pYear-$sMonth-${sDay} 00:00",DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
-                        Log.i("picker", "The date to save is: ${getString(R.string.date_visual_formatter, year, month + 1, day)}")
+                        datePickerButton.text = DateUtils.toDisplayableDate(pYear,pMonth,pDay)
+                        selectedDate =LocalDateTime.of(pYear,pMonth,pDay,0,0)
+                        Log.d("date","date: $selectedDate was selected...")
                     }
                 }, year, month, day
             )
@@ -65,17 +57,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         timePickerButton.setOnClickListener{
-            val mcurrentTime = Calendar.getInstance()
-            val hour = mcurrentTime.get(Calendar.HOUR_OF_DAY)
-            val minute = mcurrentTime.get(Calendar.MINUTE)
+
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
 
             val mTimePicker = TimePickerDialog(this,
                 { _,
                   pHour,
-                  pMinute -> {
-                    timePickerButton.text = getString(R.string.time_visual_formatter, pHour, pMinute)
-                    selectedTime=LocalTime.of(pHour,pMinute)
-                  }
+                  pMinute ->
+                    run {
+                        timePickerButton.text =
+                            getString(R.string.time_visual_formatter, pHour, pMinute)
+                        selectedTime = LocalTime.of(pHour, pMinute)
+                        Log.d("date","time: ${selectedTime.toString()} was selected...")
+                    }
                 },
                 hour,
                 minute,
@@ -83,9 +78,7 @@ class MainActivity : AppCompatActivity() {
             mTimePicker.show()
         }
 
-        val saveButton = binding.saveButton
-
-        saveButton.setOnClickListener{
+        binding.saveButton.setOnClickListener{
             if(formDataIsValid()) {
                 blodPressureDataset = BPItem( Integer.parseInt(binding.sistholicEdit.text.toString()),
                     Integer.parseInt(binding.diastholicEdit.text.toString()),
