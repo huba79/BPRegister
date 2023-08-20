@@ -24,14 +24,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="@dimen/card_margin_horiz"
-            android:layout_marginVertical="@dimen/card_margin_vert"
-            android:paddingHorizontal="@dimen/card_padding_horiz"
-            android:paddingVertical="@dimen/card_padding_vert">
+        <androidx.cardview.widget.CardView style="@style/card_style_default">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -193,24 +186,12 @@
 
     <LinearLayout
         android:id="@+id/buttonsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        style="@style/button_layout_style_default">
 
         <Button
             android:id="@+id/exitButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal"
-            android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-            android:layout_marginVertical="@dimen/card_margin_vert"
-            android:layout_weight="1"
             android:text="@string/button_exit"
-            android:textSize="@dimen/font_size_small"
-            android:textStyle="bold" />
+            style="@style/button_style_default" />
 
         <Button
             android:id="@+id/searchButton"

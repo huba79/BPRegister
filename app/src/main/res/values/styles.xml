@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="button_style_default">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center|center_horizontal</item>
+        <item name="android:layout_marginHorizontal">@dimen/inner_item_margin_horiz_short</item>
+        <item name="android:layout_marginVertical">@dimen/card_margin_vert</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/font_size_small</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="button_layout_style_default">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/fab_margin</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="card_style_default">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginHorizontal">@dimen/card_margin_horiz</item>
+        <item name="android:layout_marginVertical">@dimen/card_margin_vert</item>
+        <item name="android:paddingHorizontal">@dimen/card_padding_horiz</item>
+        <item name="android:paddingVertical">@dimen/card_padding_vert</item>
+    </style>
+</resources>

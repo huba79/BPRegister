@@ -8,67 +8,56 @@
     android:fitsSystemWindows="true"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".filter">
+    tools:context=".ui.FilterActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-        android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
-        android:gravity="center"
-        android:orientation="horizontal">
+    <androidx.cardview.widget.CardView style="@style/card_style_default">
 
-        <Button
-            android:id="@+id/selectDateFromButton"
-            android:layout_width="@dimen/text_item_width"
-            android:layout_height="@dimen/text_item_height"
-            android:layout_weight="1"
-            android:text="Button" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/dateFromView"
-            android:layout_width="@dimen/text_item_width"
-            android:layout_height="@dimen/text_item_height"
-            android:layout_weight="1"
-            android:text="TextView" />
+            <LinearLayout
+                style="@style/button_layout_style_default"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-    </LinearLayout>
+                <Button
+                    android:id="@+id/selectDateFromButton"
+                    style="@style/button_style_default"
+                    android:layout_width="@dimen/text_item_width"
+                    android:layout_weight="1"
+                    android:text="Button" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-        android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
-        android:gravity="center"
-        android:orientation="horizontal">
+                <Button
+                    android:id="@+id/selectDateToButton"
+                    style="@style/button_style_default"
+                    android:layout_width="@dimen/text_item_width"
+                    android:layout_weight="1"
+                    android:text="Button" />
 
-        <Button
-            android:id="@+id/selectDateToButton"
-            android:layout_width="@dimen/text_item_width"
-            android:layout_height="@dimen/text_item_height"
-            android:layout_weight="1"
-            android:text="Button" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/dateToView"
-            android:layout_width="@dimen/text_item_width"
-            android:layout_height="@dimen/text_item_height"
-            android:layout_weight="1"
-            android:text="TextView" />
+            <LinearLayout
+                style="@style/button_layout_style_default"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-    </LinearLayout>
+                <Button
+                    android:id="@+id/doFilterButton"
+                    style="@style/button_style_default"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
+                    android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
+                    android:gravity="center"
+                    android:text="@string/button_do_filter" />
+            </LinearLayout>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/doFilterButton"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/text_item_height"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-        android:layout_marginVertical="@dimen/inner_item_margin_vert_short"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/button_do_filter" />
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

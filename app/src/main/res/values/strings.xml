@@ -149,4 +149,6 @@
     <string name="search_button_caption">Search</string>
     <string name="sistholic_autofill_hint">Higher value goes here</string>
     <string name="diastholic_autofill_hint">Lower value goes here</string>
+    <string name="date_picker_from_caption">Date From</string>
+    <string name="date_picker_to_caption">Date To</string>
 </resources>

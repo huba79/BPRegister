@@ -1,13 +1,12 @@
 package com.example.bpregister.ui
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bpregister.databinding.ActivityBpListBinding
+import com.example.bpregister.domain.BPItem
 
-class bp_list : AppCompatActivity() {
+class ResultList : AppCompatActivity() {
 
     private lateinit var binding: ActivityBpListBinding
 
@@ -16,6 +15,7 @@ class bp_list : AppCompatActivity() {
 
         binding = ActivityBpListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val results:ArrayList<BPItem> = savedInstanceState!!.getSerializable("results") as ArrayList<BPItem>
 
 //        setSupportActionBar(findViewById(R.id.toolbar))
 //        binding.toolbarLayout.title = title

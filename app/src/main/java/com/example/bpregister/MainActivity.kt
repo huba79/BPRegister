@@ -2,6 +2,7 @@ package com.example.bpregister
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +10,9 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bpregister.databinding.ActivityMainBinding
-import com.example.bpregister.ui.BPItem
+import com.example.bpregister.domain.BPItem
+import com.example.bpregister.domain.BPRepository
+import com.example.bpregister.ui.FilterActivity
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -51,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                         if((pMonth)<9) {sMonth = "0${pMonth+1}" }
 
                         var sDay = "$pDay"
-                        if((pDay)<9) {sDay = "0${pDay}" }
+                        if((pDay)<10) {sDay = "0${pDay}" }
 
                         selectedDate = LocalDateTime.parse("$pYear-$sMonth-${sDay} 00:00",DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
                         Log.i("picker", "The date to save is: ${getString(R.string.date_visual_formatter, year, month + 1, day)}")
@@ -95,6 +98,11 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity,"Please enter your blood pressure data!", Toast.LENGTH_SHORT)
                     .show()
             }
+        }
+
+        binding.searchButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, FilterActivity::class.java)
+            startActivity(intent)
         }
 
         binding.exitButton.setOnClickListener{

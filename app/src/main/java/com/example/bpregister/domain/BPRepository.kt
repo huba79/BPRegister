@@ -1,11 +1,9 @@
-package com.example.bpregister
+package com.example.bpregister.domain
 
 import android.content.Context
 import android.util.Log
-import com.example.bpregister.ui.BPItem
 import java.io.File
 import java.io.FileInputStream
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -17,7 +15,7 @@ object BPRepository{
 
     fun writeToFile(context:Context,data: BPItem){
         val folder = context.filesDir
-        bpdatabase=File(folder,"bpDatabase.txt")
+        bpdatabase =File(folder,"bpDatabase.txt")
         if(!bpdatabase.exists()) {
             bpdatabase.createNewFile()
         }
@@ -25,14 +23,20 @@ object BPRepository{
         bpdatabase.appendText("\n")
     }
 
-    fun readFromFile():ArrayList<BPItem>  {
+    fun readFromFile(context:Context):ArrayList<BPItem>  {
+        val folder = context.filesDir
+        bpdatabase =File(folder,"bpDatabase.txt")
+        if(!bpdatabase.exists()) {
+            bpdatabase.createNewFile()
+        }
+
         input = bpdatabase.inputStream()
         val buffer = input.bufferedReader()
         try {
             val lines = buffer.readLines()
             var  bpItems:ArrayList<BPItem> = ArrayList()
 
-            var readData:BPItem
+            var readData: BPItem
 
             for (line in lines){
                 val properties = line.split("/")
@@ -51,7 +55,7 @@ object BPRepository{
         }
     }
 
-    fun filterResults(list:ArrayList<BPItem>, criteria:Criteria):ArrayList<BPItem>{
+    fun filterResults(list:ArrayList<BPItem>, criteria: Criteria):ArrayList<BPItem>{
 
         if(criteria.dateFrom!=null&&criteria.dateTo!=null) {
             for(item in list){
