@@ -110,7 +110,7 @@
                         android:typeface="sans" />
 
                     <TextView
-                        android:id="@+id/slashLabel"
+                        android:id="@+id/slashListItemView"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/text_item_height"
                         android:layout_gravity="center"

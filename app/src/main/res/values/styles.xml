@@ -12,6 +12,17 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="text_view_style_default">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginHorizontal">4dp</item>
+        <item name="android:layout_marginVertical">4dp</item>
+        <item name="android:paddingHorizontal">4dp</item>
+        <item name="android:paddingVertical">4dp</item>
+        <item name="android:textSize">@dimen/font_size_smallest</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <style name="button_layout_style_default">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -29,5 +40,9 @@
         <item name="android:layout_marginVertical">@dimen/card_margin_vert</item>
         <item name="android:paddingHorizontal">@dimen/card_padding_horiz</item>
         <item name="android:paddingVertical">@dimen/card_padding_vert</item>
+        <item name="elevation">4dp</item>
+        <item name="cornerRadius">4dp</item>
     </style>
+
+    <dimen name="font_size_smallest">12sp</dimen>
 </resources>

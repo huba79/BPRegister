@@ -2,17 +2,17 @@ package com.example.bpregister.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bpregister.databinding.ActivityBpListBinding
+import com.example.bpregister.databinding.ActivityResultListBinding
 import com.example.bpregister.domain.BPItem
 
 class ResultListActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityBpListBinding
+    private lateinit var binding: ActivityResultListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityBpListBinding.inflate(layoutInflater)
+        binding = ActivityResultListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val results:ArrayList<BPItem> = savedInstanceState!!.getSerializable("results") as ArrayList<BPItem>
 
