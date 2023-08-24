@@ -85,8 +85,10 @@ class FilterActivity : AppCompatActivity() {
 
             }
             val filteredResults = BPRepository.filterResults(results, criteria)
+            Log.d("results","before sending...$filteredResults")
             val intent = Intent(this@FilterActivity,ResultListActivity::class.java)
-            intent.putExtra("results", filteredResults as Serializable?)
+            intent.putExtra("results", filteredResults)
+            startActivity(intent)
         }
 
 //        setSupportActionBar(binding.toolbar)

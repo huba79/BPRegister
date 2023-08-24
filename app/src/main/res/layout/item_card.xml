@@ -6,17 +6,15 @@
     android:scrollbarStyle="insideInset">
 
     <androidx.cardview.widget.CardView
-        style="@style/card_style_default"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_gravity="bottom|start"
-        android:layout_weight="1">
+        style="@style/card_style_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="bottom|start"
+            android:gravity="start|center_vertical"
             android:minHeight="30dp"
             android:orientation="horizontal"
             android:paddingHorizontal="4dp">
@@ -25,7 +23,7 @@
                 android:id="@+id/sistholicListItemView"
                 style="@style/text_view_style_default"
                 android:gravity="center_vertical"
-                android:minWidth="32dp" />
+                android:minWidth="40dp" />
 
             <TextView
                 android:id="@+id/slashListItemView"
@@ -40,14 +38,14 @@
                 android:id="@+id/diastholicListItemView"
                 style="@style/text_view_style_default"
                 android:gravity="bottom"
-                android:minWidth="32dp" />
+                android:minWidth="40dp" />
 
             <TextView
                 android:id="@+id/atListItemView"
                 style="@style/text_view_style_default"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/at" />
+                android:text="@string/read_on" />
 
             <TextView
                 android:id="@+id/dateListItemView"
@@ -59,7 +57,7 @@
                 style="@style/text_view_style_default"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/colon" />
+                android:text="@string/at" />
 
             <TextView
                 android:id="@+id/timeListItemView"

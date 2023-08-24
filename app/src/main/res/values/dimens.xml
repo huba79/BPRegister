@@ -15,11 +15,23 @@
     <dimen name="text_item_padding_horiz">4dp</dimen>
     <dimen name="text_item_padding_vert">4dp</dimen>
 
-    <dimen name="card_padding_horiz">4dp</dimen>
-    <dimen name="card_padding_vert">4dp</dimen>
+    <dimen name="input_card_padding_horiz">4dp</dimen>
+    <dimen name="input_card_padding_vert">4dp</dimen>
 
-    <dimen name="card_margin_horiz">16dp</dimen>
-    <dimen name="card_margin_vert">16dp</dimen>
+    <dimen name="input_card_margin_horiz">16dp</dimen>
+    <dimen name="input_card_margin_vert">16dp</dimen>
+
+    <dimen name="list_item_card_margin_horiz">8dp</dimen>
+    <dimen name="list_item_card_margin_vert">4dp</dimen>
+
+    <dimen name="list_item_card_padding_horiz">8dp</dimen>
+    <dimen name="list_item_card_padding_vert">4dp</dimen>
+
+    <dimen name="list_header_card_margin_horiz">8dp</dimen>
+    <dimen name="list_header_card_margin_vert">8dp</dimen>
+
+    <dimen name="list_header_card_padding_horiz">8dp</dimen>
+    <dimen name="list_header_card_padding_vert">8dp</dimen>
 
     <dimen name="item_corner_radius">4dp</dimen>
 

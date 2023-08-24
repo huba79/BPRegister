@@ -18,7 +18,7 @@
             android:label="@string/title_activity_filter"
             android:theme="@style/Theme.BPRegister" />
         <activity
-            android:name=".bp_list"
+            android:name=".ui.ResultListActivity"
             android:exported="false"
             android:label="@string/title_activity_bp_list"
             android:theme="@style/Theme.BPRegister.NoActionBar" />

@@ -151,6 +151,8 @@
     <string name="diastholic_autofill_hint">Lower value goes here</string>
     <string name="date_picker_from_caption">Date From</string>
     <string name="date_picker_to_caption">Date To</string>
+    <string name="read_on">"read on:"</string>
     <string name="at" translatable="false">\@</string>
-    <string name="colon" translatable="false">:</string>
+    <string name="label_date">Date</string>
+    <string name="label_time">Time</string>
 </resources>

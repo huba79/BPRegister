@@ -22,4 +22,7 @@
     <string name="diastholic_autofill_hint">Alacsonyabb érték</string>
     <string name="date_picker_from_caption">Dátumtól</string>
     <string name="date_picker_to_caption">Dátumig</string>
+    <string name="read_on">mérve:</string>
+    <string name="label_date">Date</string>
+    <string name="label_time">Time</string>
 </resources>
