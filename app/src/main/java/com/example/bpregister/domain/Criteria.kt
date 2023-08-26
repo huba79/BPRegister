@@ -15,4 +15,9 @@ data class Criteria(var dateFrom: LocalDateTime?, var dateTo:LocalDateTime?) {
         }
         return this
     }
+    fun clear():Criteria {
+        dateFrom=null
+        dateTo=null
+        return this
+    }
 }

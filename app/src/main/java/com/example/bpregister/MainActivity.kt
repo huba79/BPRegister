@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity() {
             val pickerDialog = DatePickerDialog(this,
                 { _, pYear, pMonth, pDay ->
                     run {
-                        datePickerButton.text = DateUtils.toDisplayableDate(pYear,pMonth,pDay)
-                        selectedDate =LocalDateTime.of(pYear,pMonth,pDay,0,0)
+                        datePickerButton.text = DateUtils.toDisplayableDate(pYear,pMonth+1,pDay)
+                        selectedDate =LocalDateTime.of(pYear,pMonth+1,pDay,0,0)
                         Log.d("date","date: $selectedDate was selected...")
                     }
                 }, year, month, day

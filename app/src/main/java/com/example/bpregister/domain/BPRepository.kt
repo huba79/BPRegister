@@ -35,7 +35,7 @@ object BPRepository{
         val buffer = input.bufferedReader()
         try {
             val lines = buffer.readLines()
-            var  bpItems:ArrayList<BPItem> = ArrayList()
+            val bpItems:ArrayList<BPItem> = ArrayList()
 
             var convertedData: BPItem
 
@@ -49,7 +49,7 @@ object BPRepository{
                 val time = LocalTime.parse(properties[3],DateTimeFormatter.ofPattern("HH:mm"))
 
                 convertedData = BPItem(sistholic,diastholic,LocalDateTime.of(date.year,date.month,date.dayOfMonth,0,0),time )
-                Log.d("readFromFile",convertedData.toString())
+//                Log.d("readFromFile",convertedData.toString())
                 bpItems.add(convertedData)
             }
             return bpItems
@@ -62,35 +62,47 @@ object BPRepository{
     }
 
     fun filterResults(list:ArrayList<BPItem>, criteria: Criteria):ArrayList<BPItem>{
+        val result=ArrayList<BPItem>()
 
-        if(criteria.dateFrom!=null&&criteria.dateTo!=null) {
-            for(item in list){
-                if(!(item.localDate>=criteria.dateFrom && item.localDate<=criteria.dateTo)){
-                    list.remove(item)
+        if(criteria.dateFrom!=null && criteria.dateTo==null) {
+            Log.d("filter","DateTo is null case")
+            if(list.isNotEmpty()) {
+                for(item in list){
+                    Log.d("filter","item.dateFrom: ${item.localDate} is after ${criteria.dateFrom} result being: ${item.localDate.isAfter(criteria.dateFrom)}")
+                    if(item.localDate.isAfter(criteria.dateFrom)){
+                        result.add(item)
+                    }
                 }
             }
-            return list
-        }
-        if(criteria.dateFrom!=null&&criteria.dateTo==null) {
-            for(item in list){
-                if(item.localDate<criteria.dateFrom){
-                    list.remove(item)
-                }
-            }
-            return list
+
+            return result
         }
 
-        if(criteria.dateFrom==null&&criteria.dateTo!=null) {
+        if(criteria.dateFrom==null && criteria.dateTo!=null) {
+            Log.d("filter","DateFrom is null case")
             for(item in list){
-                if(item.localDate>criteria.dateTo){
-                    list.remove(item)
+                Log.d("filter","item.dateFrom: ${item.localDate} is befor  ${criteria.dateFrom} result being: ${item.localDate.isBefore(criteria.dateTo)}")
+                if(item.localDate.isBefore(criteria.dateTo)){
+                    result.add(item)
                 }
             }
-            return list
+            return result
+        }
+
+        Log.d("filter","Both not empty")
+        if(criteria.dateFrom!=null && criteria.dateTo!=null) {
+            if (list.isNotEmpty()) {
+                for (item in list) {
+                    if ((item.localDate.isAfter(criteria.dateFrom) && item.localDate.isBefore(criteria.dateTo))
+                    ) {
+                        result.add(item)
+                    }
+                }
+            }
+            return result
         }
 
         return list
-
     }
 
 }

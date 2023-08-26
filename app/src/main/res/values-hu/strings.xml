@@ -3,7 +3,7 @@
     <string name="app_name">Bibizz vérnyomásnapló</string>
     <string name="title_activity_bp_list">Vérnyomásadatok</string>
     <string name="action_settings">Beállítások</string>
-    <string name="title_activity_filter">Keress!</string>
+    <string name="title_activity_filter">Dátum szűrő</string>
     <string name="next">Következő</string>
     <string name="previous">Előző</string>
     <string name="greeting_message">Vérnyomás-regiszter</string>
@@ -25,4 +25,5 @@
     <string name="read_on">mérve:</string>
     <string name="label_date">Date</string>
     <string name="label_time">Time</string>
+    <string name="ekg_content_description">EKG kép</string>
 </resources>

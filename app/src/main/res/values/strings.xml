@@ -2,7 +2,7 @@
     <string name="app_name">Bibizz BP register</string>
     <string name="title_activity_bp_list">Blood pressure hirstorical data</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_filter">Find what you need</string>
+    <string name="title_activity_filter">Blood pressure history filter</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -134,7 +134,7 @@
     </string>
     <string name="greeting_message">Bibizz blood pressure register</string>
     <string name="registration_card_title">Enter your blood pressure reading</string>
-    <string name="button_do_filter">Let\'s see them</string>
+    <string name="button_do_filter">Filter</string>
     <string name="label_sistholic">Sistholic</string>
     <string name="label_diastholic">Diastholic</string>
     <string name="button_save">Save</string>
@@ -155,4 +155,5 @@
     <string name="at" translatable="false">\@</string>
     <string name="label_date">Date</string>
     <string name="label_time">Time</string>
+    <string name="ekg_content_description">EKG image</string>
 </resources>

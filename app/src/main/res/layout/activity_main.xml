@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
+    android:theme="@style/Base.Theme.BPRegister"
     tools:context=".MainActivity">
 
     <ImageView
@@ -14,7 +15,8 @@
         android:layout_height="0dp"
         android:layout_gravity="top"
         android:layout_weight="3"
-        android:background="@drawable/ekg" />
+        android:background="@drawable/ekg"
+        android:contentDescription="@string/ekg_content_description" />
 
     <LinearLayout
         android:id="@+id/contentLayout"
@@ -30,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -89,7 +92,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="@dimen/text_item_padding_horiz">
@@ -147,7 +149,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-                    android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="@dimen/text_item_padding_horiz">
@@ -191,32 +192,38 @@
         <Button
             android:id="@+id/exitButton"
             android:text="@string/button_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
+            android:layout_marginVertical="@dimen/input_card_margin_vert"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:typeface="sans"
             style="@style/button_style_default" />
 
         <Button
             android:id="@+id/searchButton"
+            android:text="@string/search_button_caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
             android:layout_marginVertical="@dimen/input_card_margin_vert"
             android:layout_weight="1"
-            android:text="@string/search_button_caption"
-            android:textSize="@dimen/font_size_small"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:typeface="sans"
+            style="@style/button_style_default" />
 
         <Button
             android:id="@+id/saveButton"
+            android:text="@string/button_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
             android:layout_marginVertical="@dimen/input_card_margin_vert"
             android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/button_save"
-            android:textSize="@dimen/font_size_small"
             android:textStyle="bold"
-            android:typeface="sans" />
+            android:typeface="sans"
+            style="@style/button_style_default"/>
 
     </LinearLayout>
 
