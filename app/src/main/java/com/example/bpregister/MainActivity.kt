@@ -1,5 +1,6 @@
 package com.example.bpregister
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
@@ -8,22 +9,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.example.bpregister.databinding.ActivityMainBinding
 import com.example.bpregister.domain.BPItem
 import com.example.bpregister.domain.BPRepository
-import com.example.bpregister.utils.DateUtils
 import com.example.bpregister.ui.FilterActivity
+import com.example.bpregister.utils.DateUtils
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
     private lateinit var binding : ActivityMainBinding
     private lateinit var blodPressureDataset : BPItem
     private val repo = BPRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this@MainActivity))
         setContentView(binding.root)

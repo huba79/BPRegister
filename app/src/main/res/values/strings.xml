@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Bibizz BP register</string>
-    <string name="title_activity_bp_list">Blood pressure hirstorical data</string>
+    <string name="title_activity_bp_list">Blood pressure historical data</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_filter">Blood pressure history filter</string>
     <string name="next">Next</string>
@@ -145,7 +145,6 @@
     <string name="error_saving_data">Error saving data</string>
     <string name="time_visual_formatter" translatable="false">%1$d : %2$d</string>
     <string name="date_visual_formatter" translatable="false">%1$d/%2$d/%3$d</string>
-    <string name="visual_separator" translatable="false">/</string>
     <string name="search_button_caption">Search</string>
     <string name="sistholic_autofill_hint">Higher value goes here</string>
     <string name="diastholic_autofill_hint">Lower value goes here</string>
@@ -156,4 +155,5 @@
     <string name="label_date">Date</string>
     <string name="label_time">Time</string>
     <string name="ekg_content_description">EKG image</string>
+    <string name="slash" translatable="false">/</string>
 </resources>

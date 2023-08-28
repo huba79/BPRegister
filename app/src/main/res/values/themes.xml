@@ -1,45 +1,56 @@
 <resources>
     <!-- App base theme. -->
     <style name="Base.Theme.BPRegister" parent="Theme.Material3.Light">
-        <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/material_dynamic_primary10</item>
-        <item name="colorPrimaryVariant">@color/material_dynamic_primary30</item>
-        <item name="colorOnPrimary">@color/material_dynamic_primary90</item>
-        <item name="colorOnPrimaryContainer">@color/material_dynamic_primary50</item>
+<!-- unused theme colors -->
+        <item name="colorPrimary">@color/material_dynamic_primary10</item> <!-- toolbar, buttons bg,dialog action text -->
+        <item name="colorOnPrimary">@color/material_dynamic_primary95</item> <!-- button txt -->
 
-        <item name="colorSecondary">@color/material_dynamic_secondary10</item>
-        <item name="colorSecondaryVariant">@color/material_dynamic_secondary30</item>
-        <item name="colorOnSecondary">@color/material_dynamic_secondary90</item>
-        <item name="colorSecondaryContainer">@color/material_dynamic_secondary50</item>
+        <item name="colorSecondary">@color/material_dynamic_secondary20</item> <!-- picker selected background -->
 
-        <item name="colorTertiary">@color/material_dynamic_neutral10</item>
-        <item name="colorOnTertiary">@color/material_dynamic_neutral80</item>
-        <item name="colorOnTertiaryContainer">@color/material_dynamic_neutral_variant30</item>
+        <item name="colorSurface">@color/material_dynamic_secondary80</item> <!-- title bar bg, picker main bg -->
+        <item name="colorOnSurface">@color/material_dynamic_secondary10</item> <!-- title bar text -->
 
-<!--        <item name="colorSurfaceContainerLowest">@color/material_dynamic_neutral90</item>-->
-        <item name="colorSurface">@color/material_dynamic_secondary90</item>
-        <item name="colorOnSurface">@color/material_dynamic_secondary10</item>
-        <item name="colorSurfaceVariant">@color/material_dynamic_secondary60</item>
+        <item name="android:colorBackground">@color/material_dynamic_secondary80</item> <!-- layout default bg -->
+        <item name="android:colorForeground">@color/material_dynamic_primary20</item> <!-- not used -->
 
-        <item name="colorOnContainer">@color/material_dynamic_tertiary70</item>
-        <item name="colorContainer">@color/material_dynamic_tertiary30</item>
+        <item name="android:textColorPrimaryInverse">@android:color/holo_red_light</item> <!-- text of picker selected date, title-->
+        <item name="android:textColorPrimary">@android:color/holo_green_dark</item> <!-- text of picker dates?-->
+        <item name="android:textColorSecondary">@android:color/holo_purple</item>  <!-- edit underline, picker day header -->
+        <item name="android:textColorSecondaryInverse">@android:color/holo_orange_dark</item> <!-- text of picker selected year-->
+        <item name="android:textColorTertiary">@color/material_dynamic_secondary10</item> <!-- default normal text -->
 
-        <item name="colorBackgroundFloating">@color/material_dynamic_primary80</item>
-        <item name="android:colorBackground">@color/material_dynamic_secondary80</item>
-        <item name="colorOnBackground">@color/material_dynamic_primary20</item>
+        <item name="actionBarStyle">@style/Theme.Material3.Light</item>
+        <item name="toolbarStyle">@style/ThemeOverlay.Material3.Toolbar.Surface</item>
 
         <item name="colorError">@color/design_default_color_error</item>
         <item name="colorOnError">@color/material_dynamic_primary90</item>
+
+<!-- unused theme colors -->
+        <item name="colorOnBackground">@color/material_dynamic_primary20</item> <!-- not used -->
+        <item name="colorBackgroundFloating">@color/material_dynamic_primary80</item> <!-- not used -->
+        <item name="colorOnContainer">@color/material_dynamic_tertiary70</item> <!-- not used -->
+        <item name="colorContainer">@color/material_dynamic_tertiary30</item> <!-- not used -->
+        <item name="colorSurfaceVariant">@color/material_dynamic_secondary60</item> <!-- not used -->
+        <item name="colorOnSurfaceVariant">@color/material_dynamic_secondary20</item>  <!-- not used -->
+        <item name="colorTertiary">@color/material_dynamic_neutral10</item>  <!-- not used -->
+        <item name="colorOnTertiary">@color/material_dynamic_neutral80</item>  <!-- not used -->
+        <item name="colorOnTertiaryContainer">#FFFF0000</item>  <!-- not used -->
+        <item name="colorOnSecondary">@color/material_dynamic_secondary90</item> <!-- not used -->
+        <item name="colorSecondaryContainer">@color/material_dynamic_secondary50</item> <!-- not used -->
+        <item name="colorSurfaceContainerLowest">@color/material_dynamic_neutral90</item> <!-- not used -->
+        <item name="colorSecondaryVariant">@color/material_dynamic_secondary30</item> <!-- not used -->
+        <item name="colorPrimaryVariant">@color/material_dynamic_primary30</item> <!-- not used -->
+        <item name="colorOnPrimaryContainer">@color/material_dynamic_primary50</item> <!-- not used -->
     </style>
 
     <style name="Theme.BPRegister" parent="Base.Theme.BPRegister">
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="Theme.BPRegister.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+<!--    <style name="Theme.BPRegister.NoActionBar">-->
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--    </style>-->
 <!--&lt;!&ndash;not working yet&ndash;&gt;-->
 <!--    <style name="Theme.BPRegister.Toolbar" parent="Widget.Material3.Toolbar">-->
 <!--        <item name="android:background">@color/material_dynamic_secondary10</item>-->

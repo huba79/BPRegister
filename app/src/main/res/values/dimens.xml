@@ -1,7 +1,9 @@
 <resources>
     <dimen name="app_bar_height">180dp</dimen>
+
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
     <dimen name="text_item_height">40dp</dimen>
     <dimen name="text_item_width">0dp</dimen>
 
@@ -34,15 +36,18 @@
     <dimen name="list_header_card_padding_vert">8dp</dimen>
 
     <dimen name="item_corner_radius">4dp</dimen>
+    <dimen name="card_large_corner_radius">8dp</dimen>
 
     <dimen name="inner_item_margin_horiz_short">8dp</dimen>
     <dimen name="inner_item_margin_vert_short">8dp</dimen>
 
-    <dimen name="font_size_normal">16sp</dimen>
+    <dimen name="font_size_smallest">12sp</dimen>
     <dimen name="font_size_small">14sp</dimen>
+    <dimen name="font_size_normal">16sp</dimen>
     <dimen name="font_size_large">20sp</dimen>
-    <dimen name="font_size_title">20sp</dimen>
+    <dimen name="font_size_title">24sp</dimen>
 
-
+    <dimen name="footer_maximum_height">180dp</dimen>
+    <dimen name="footer_min_height">150dp</dimen>
 
 </resources>

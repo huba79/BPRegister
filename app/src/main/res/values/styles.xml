@@ -24,16 +24,18 @@
         <item name="android:textStyle">normal</item>
     </style>
 
-    <style name="button_layout_style_default">
+    <style name="footer_style_default">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">@dimen/fab_margin</item>
+        <item name="android:maxHeight">@dimen/footer_maximum_height</item>
+        <item name="android:minHeight">@dimen/footer_min_height</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
     </style>
 
     <style name="card_style_default">
+        <item name="android:background">@color/cardBg</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
@@ -41,11 +43,12 @@
         <item name="android:layout_marginVertical">@dimen/input_card_margin_vert</item>
         <item name="android:paddingHorizontal">@dimen/input_card_padding_horiz</item>
         <item name="android:paddingVertical">@dimen/input_card_padding_vert</item>
-        <item name="elevation">4dp</item>
-        <item name="cornerRadius">4dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">@dimen/card_large_corner_radius</item>
     </style>
 
     <style name="card_style_list_header">
+<!--        <item name="cardBackgroundColor">@color/material_dynamic_primary20</item>-->
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
@@ -58,6 +61,7 @@
     </style>
 
     <style name="card_style_list">
+<!--        <item name="cardBackgroundColor">@color/material_dynamic_neutral60</item>-->
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
@@ -69,5 +73,19 @@
         <item name="cornerRadius">4dp</item>
     </style>
 
-    <dimen name="font_size_smallest">12sp</dimen>
+    <style name="inline_separator_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/text_item_height</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginHorizontal">@dimen/text_item_margin_horiz</item>
+        <item name="android:layout_marginVertical">@dimen/text_item_margin_vert</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:includeFontPadding">true</item>
+        <item name="android:lines">1</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
 </resources>

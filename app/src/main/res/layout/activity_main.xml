@@ -22,7 +22,7 @@
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
+        android:layout_weight="10"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -98,7 +98,7 @@
 
                     <EditText
                         android:id="@+id/sistholicEdit"
-                        style="@android:style/Widget.Holo.EditText"
+                        style="@android:style/Widget.EditText"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
@@ -113,23 +113,12 @@
 
                     <TextView
                         android:id="@+id/slashListItemView"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/text_item_height"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
-                        android:layout_marginVertical="@dimen/text_item_margin_vert"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:includeFontPadding="true"
-                        android:lines="1"
-                        android:text="@string/visual_separator"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:typeface="sans" />
+                        style="@style/inline_separator_style"
+                        android:text="@string/slash" />
 
                     <EditText
                         android:id="@+id/diastholicEdit"
-                        style="@android:style/Widget.Holo.EditText"
+                        style="@android:style/Widget.EditText"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
@@ -155,7 +144,7 @@
 
                     <Button
                         android:id="@+id/datePickerButton"
-                        style="@android:style/Widget.Holo.EditText"
+                        style="@android:style/Widget.EditText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
@@ -165,9 +154,18 @@
                         android:paddingVertical="@dimen/text_item_padding_vert"
                         android:textSize="@dimen/font_size_normal" />
 
+                    <TextView
+                        android:id="@+id/textView"
+                        style="@style/inline_separator_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/at"
+                        android:textSize="20sp"
+                        android:textStyle="normal" />
+
                     <Button
                         android:id="@+id/timePickerButton"
-                        style="@android:style/Widget.Holo.EditText"
+                        style="@android:style/Widget.EditText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
@@ -187,7 +185,7 @@
 
     <LinearLayout
         android:id="@+id/buttonsLayout"
-        style="@style/button_layout_style_default">
+        style="@style/footer_style_default">
 
         <Button
             android:id="@+id/exitButton"

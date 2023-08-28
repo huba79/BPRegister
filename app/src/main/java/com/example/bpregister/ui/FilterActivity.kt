@@ -1,11 +1,11 @@
 package com.example.bpregister.ui
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import com.example.bpregister.R
 import com.example.bpregister.databinding.ActivityFilterBinding
 import com.example.bpregister.domain.BPItem
@@ -14,7 +14,7 @@ import com.example.bpregister.domain.Criteria
 import com.example.bpregister.utils.DateUtils
 import java.time.LocalDateTime
 
-class FilterActivity : AppCompatActivity() {
+class FilterActivity : Activity() {
 
     private lateinit var binding: ActivityFilterBinding
     private var fromDate:LocalDateTime? = null
