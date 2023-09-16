@@ -64,7 +64,7 @@ class FilterActivity : Activity() {
             val pickerDialog = DatePickerDialog(this, ScreenProps.getDialogThemeAdvice(resources),
                 { _, pYear, pMonth, pDay ->
                     run {
-                        dateToButton.text = DateUtils.toDisplayableDate(pYear,pMonth,pDay)
+                        dateToButton.text = DateUtils.toDisplayableDate(pYear,pMonth+1,pDay)
                         criteria.dateTo=LocalDateTime.of(pYear,pMonth+1,pDay,0,0)
                     }
                 }, defaultToYear, defaultToMonth, defaultToDay
