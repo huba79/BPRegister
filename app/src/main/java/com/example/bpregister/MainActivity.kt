@@ -15,9 +15,11 @@ import com.example.bpregister.domain.BPItem
 import com.example.bpregister.domain.BPRepository
 import com.example.bpregister.ui.FilterActivity
 import com.example.bpregister.utils.DateUtils
+import com.example.bpregister.utils.ScreenProps
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+
 
 class MainActivity : Activity() {
     private lateinit var binding : ActivityMainBinding
@@ -44,9 +46,8 @@ class MainActivity : Activity() {
 
         datePickerButton.text = getString(R.string.date_visual_formatter, year, month + 1, day)
         timePickerButton.text = selectedDate.format(DateTimeFormatter.ofPattern("HH:mm"))
-
         datePickerButton.setOnClickListener {
-            val pickerDialog = DatePickerDialog(this,
+            val pickerDialog = DatePickerDialog(this, ScreenProps.getDialogThemeAdvice(resources),
                 { _, pYear, pMonth, pDay ->
                     run {
                         datePickerButton.text = DateUtils.toDisplayableDate(pYear,pMonth+1,pDay)
@@ -63,7 +64,7 @@ class MainActivity : Activity() {
             val hour = calendar.get(Calendar.HOUR_OF_DAY)
             val minute = calendar.get(Calendar.MINUTE)
 
-            val mTimePicker = TimePickerDialog(this,
+            val mTimePicker = TimePickerDialog(this, ScreenProps.getDialogThemeAdvice(resources),
                 { _,
                   pHour,
                   pMinute ->

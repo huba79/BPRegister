@@ -12,6 +12,7 @@ import com.example.bpregister.domain.BPItem
 import com.example.bpregister.domain.BPRepository
 import com.example.bpregister.domain.Criteria
 import com.example.bpregister.utils.DateUtils
+import com.example.bpregister.utils.ScreenProps
 import java.time.LocalDateTime
 
 class FilterActivity : Activity() {
@@ -48,7 +49,7 @@ class FilterActivity : Activity() {
         Log.d("date","defaults set up")
 
         binding.selectDateFromButton.setOnClickListener {
-            val pickerDialog = DatePickerDialog(this,
+            val pickerDialog = DatePickerDialog(this, ScreenProps.getDialogThemeAdvice(resources),
                 { _, pYear, pMonth, pDay ->
                     run {
                         dateFromButton.text = DateUtils.toDisplayableDate(pYear,pMonth,pDay)
@@ -60,7 +61,7 @@ class FilterActivity : Activity() {
         }
 
         binding.selectDateToButton.setOnClickListener {
-            val pickerDialog = DatePickerDialog(this,
+            val pickerDialog = DatePickerDialog(this, ScreenProps.getDialogThemeAdvice(resources),
                 { _, pYear, pMonth, pDay ->
                     run {
                         dateToButton.text = DateUtils.toDisplayableDate(pYear,pMonth,pDay)

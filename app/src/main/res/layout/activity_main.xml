@@ -105,6 +105,7 @@
                         android:layout_marginVertical="@dimen/text_item_margin_vert"
                         android:layout_weight="3"
                         android:autofillHints="@string/diastholic_autofill_hint"
+                        android:backgroundTint="@color/material_dynamic_secondary10"
                         android:gravity="center"
                         android:inputType="number"
                         android:textSize="@dimen/font_size_normal"
@@ -125,6 +126,7 @@
                         android:layout_marginVertical="@dimen/text_item_margin_vert"
                         android:layout_weight="3"
                         android:autofillHints="@string/label_diastholic"
+                        android:backgroundTint="@color/material_dynamic_secondary10"
                         android:gravity="center"
                         android:inputType="number"
                         android:textSize="@dimen/font_size_normal"
@@ -144,12 +146,12 @@
 
                     <Button
                         android:id="@+id/datePickerButton"
-                        style="@android:style/Widget.EditText"
+                        style="@style/button_style_default"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
                         android:layout_marginVertical="@dimen/text_item_margin_vert"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:paddingHorizontal="@dimen/text_item_padding_horiz"
                         android:paddingVertical="@dimen/text_item_padding_vert"
                         android:textSize="@dimen/font_size_normal" />
@@ -157,21 +159,16 @@
                     <TextView
                         android:id="@+id/textView"
                         style="@style/inline_separator_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/at"
-                        android:textSize="20sp"
-                        android:textStyle="normal" />
+                        android:text="@string/at" />
 
                     <Button
                         android:id="@+id/timePickerButton"
-                        style="@android:style/Widget.EditText"
+                        style="@style/button_style_default"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
                         android:layout_marginVertical="@dimen/text_item_margin_vert"
-                        android:layout_weight="1"
-                        android:gravity="center"
+                        android:layout_weight="3"
                         android:paddingHorizontal="@dimen/text_item_padding_horiz"
                         android:paddingVertical="@dimen/text_item_padding_vert"
                         android:textSize="@dimen/font_size_normal" />
