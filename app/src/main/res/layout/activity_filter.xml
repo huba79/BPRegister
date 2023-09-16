@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                style="@style/footer_style_default"
+                style="@style/layout_line_style_default"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -41,7 +41,7 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/footer_style_default"
+                style="@style/layout_line_style_default"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal">

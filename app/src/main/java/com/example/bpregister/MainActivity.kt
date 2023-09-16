@@ -39,8 +39,6 @@ class MainActivity : Activity() {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-
-
         var selectedDate = LocalDateTime.now()
         var selectedTime = LocalTime.now()
 
