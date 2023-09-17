@@ -52,7 +52,7 @@ class FilterActivity : Activity() {
             val pickerDialog = DatePickerDialog(this, ScreenProps.getDialogThemeAdvice(resources),
                 { _, pYear, pMonth, pDay ->
                     run {
-                        dateFromButton.text = DateUtils.toDisplayableDate(pYear,pMonth,pDay)
+                        dateFromButton.text = DateUtils.toDisplayableDate(pYear,pMonth+1,pDay)
                         criteria.dateFrom=LocalDateTime.of(pYear,pMonth+1,pDay,0,0)
                     }
                 }, defaultFromYear, defaultFromMonth, defaultFromDay
@@ -88,6 +88,8 @@ class FilterActivity : Activity() {
             Log.d("results","Filtered, before sending...$filteredResults")
             val intent = Intent(this@FilterActivity,ResultListActivity::class.java)
             intent.putExtra("results", filteredResults)
+            intent.putExtra("dateFrom", criteria.dateFrom)
+            intent.putExtra("dateTo", criteria.dateTo)
             startActivity(intent)
         }
 

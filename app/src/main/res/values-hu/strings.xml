@@ -26,4 +26,17 @@
     <string name="label_date">Date</string>
     <string name="label_time">Time</string>
     <string name="ekg_content_description">EKG kép</string>
+    <string name="title_send_email">Elküld</string>
+    <string name="email_text_fixed">Text of the email, need to finish</string>
+    <string name="email_message_hint">Üzenet...</string>
+    <string name="email_subject_hint">Tárgy...</string>
+    <string name="email_to_hint">Címzett(ek), vesszővel választva</string>
+    <string name="default_subject">%s - %s közti vérnyomásértékeim - %s</string>
+    <string name="default_message">
+        "Tisztelt Dr %s,\n\n"
+        "Mellékelten küldöm a %s - %s közt mért vérnyomásértékeimet.\n"
+        "Kérem írja meg a következő időpontomat\n\n"
+        "Tisztelettel,\n"
+        "%s"
+    </string>
 </resources>

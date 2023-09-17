@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/Base.Theme.BPRegister"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".ui.ResultListActivity"
- >
+    android:theme="@style/Base.Theme.BPRegister"
+    tools:context=".ui.ResultListActivity">
 
     <androidx.cardview.widget.CardView
-        style="@style/card_style_list_header"
+        android:id="@+id/titleCardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,5 +61,26 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/resultsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/footerButtonsView"
+        android:layout_below="@+id/titleCardView"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scrollbarStyle="insideOverlay">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/footerButtonsView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/sendResultsInMailButton"
+            style="@style/button_mail_style"
+            android:layout_alignParentEnd="true"
+            android:background="@android:drawable/ic_dialog_email" />
+    </RelativeLayout>
+
+</RelativeLayout>
