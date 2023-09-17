@@ -156,4 +156,12 @@
     <string name="label_time">Time</string>
     <string name="ekg_content_description">EKG image</string>
     <string name="slash" translatable="false">/</string>
+    <string name="smtp_host" translatable="false">smtp.gmail.com</string>
+    <string name="smtp_port" translatable="false">587</string>
+    <string name="smtp_tls" translatable="false">true</string>
+    <string name="title_send_email">send Email</string>
+    <string name="email_text_fixed">Text of the email, need to finish</string>
+    <string name="email_message_hint">Enter message here...</string>
+    <string name="email_subject_hint">Subject</string>
+    <string name="email_to_hint">Recipient email(s), separated by comma</string>
 </resources>

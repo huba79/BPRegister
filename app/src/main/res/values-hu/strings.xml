@@ -26,4 +26,9 @@
     <string name="label_date">Date</string>
     <string name="label_time">Time</string>
     <string name="ekg_content_description">EKG kép</string>
+    <string name="title_send_email">send Email</string>
+    <string name="email_text_fixed">Text of the email, need to finish</string>
+    <string name="email_message_hint">Enter message here...</string>
+    <string name="email_subject_hint">Subject</string>
+    <string name="email_to_hint">Recipient email(s), separated by comma</string>
 </resources>

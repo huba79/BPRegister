@@ -3,20 +3,25 @@
 
     <style name="button_style_default">
         <item name="android:layout_width">wrap_content</item>
-<!--        <item name="android:background">@drawable/button_borders</item>-->
-        <item name="backgroundTint">@android:color/transparent</item>
-        <item name="cornerRadius">8dp</item>
-        <item name="rippleColor">#33AAAAAA</item>
-        <item name="strokeColor">@color/material_dynamic_secondary80</item>
-        <item name="strokeWidth">1dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center|center_horizontal</item>
+          <item name="android:layout_gravity">center|center_horizontal</item>
         <item name="android:layout_marginHorizontal">@dimen/inner_item_margin_horiz_short</item>
         <item name="android:layout_marginVertical">@dimen/input_card_margin_vert</item>
         <item name="android:paddingHorizontal">@dimen/text_item_padding_horiz</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textSize">@dimen/font_size_small</item>
         <item name="android:textStyle">bold</item>
+
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="rippleColor">#33AAAAAA</item>
+        <item name="strokeColor">@color/material_dynamic_secondary80</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="button_style_right" parent="button_style_default">
+        <item name="android:layout_marginHorizontal">24dp</item>
+        <item name="android:layout_marginVertical">24dp</item>
     </style>
 
     <style name="text_view_style_default">
@@ -63,7 +68,6 @@
     </style>
 
     <style name="card_style_list_header">
-<!--        <item name="cardBackgroundColor">@color/material_dynamic_primary20</item>-->
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
