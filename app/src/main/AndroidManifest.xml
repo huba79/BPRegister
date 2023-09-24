@@ -16,10 +16,6 @@
         android:theme="@style/Theme.BPRegister"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MailerActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BPRegister" />
-        <activity
             android:name=".ui.FilterActivity"
             android:exported="false"
             android:label="@string/title_activity_filter"

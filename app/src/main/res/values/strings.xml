@@ -58,10 +58,10 @@
     <string name="smtp_tls" translatable="false">true</string>
     <string name="title_send_email">Send</string>
     <string name="email_text_fixed">Text of the email, need to finish</string>
-    <string name="email_message_hint">Enter message here...</string>
+    <string name="email_message_hint">Enter message here…</string>
     <string name="email_subject_hint">Subject</string>
     <string name="email_to_hint">Recipient email(s), comma separated</string>
-    <string name="default_recipient" translatable="false">@string/smtp_username</string>
+<!--    <string name="default_recipient" translatable="false">@string/smtp_username</string>-->
     <string name="default_subject">"Blood pressure values between %s and %s for %s"</string>
     <string name="default_message">
         "Dear Dr %s,\n\n"
