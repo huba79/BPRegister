@@ -62,10 +62,37 @@
     <string name="email_subject_hint">Subject</string>
     <string name="email_to_hint">Recipient email(s), comma separated</string>
 <!--    <string name="default_recipient" translatable="false">@string/smtp_username</string>-->
-    <string name="default_subject">"Blood pressure values between %s and %s for %s"</string>
-    <string name="default_message">
+    <string name="subject_default">"Blood pressure values between %s and %s for %s"</string>
+    <string name="subject_bound_low">"Blood pressure values after %s for %s"</string>
+    <string name="subject_bound_up">"Blood pressure values before %s for %s"</string>
+    <string name="subject_unbound">Blood pressure values for %s"</string>
+    <string name="message_default">
         "Dear Dr %s,\n\n"
         "Attached you find my blood pressure values measured between %s and %s, in csv format.\n"
+        "Please reply to me the date of my next appointment\n\n"
+        "Best regards,\n"
+        "%s"
+    </string>
+
+    <string name="message_bound_low">
+        "Dear Dr %s,\n\n"
+        "Attached you find my blood pressure values measured after %s, in csv format.\n"
+        "Please reply to me the date of my next appointment\n\n"
+        "Best regards,\n"
+        "%s"
+    </string>
+
+    <string name="message_bound_up">
+        "Dear Dr %s,\n\n"
+        "Attached you find my blood pressure values measured before %s, in csv format.\n"
+        "Please reply to me the date of my next appointment\n\n"
+        "Best regards,\n"
+        "%s"
+    </string>
+
+    <string name="message_unbound">
+        "Dear Dr %s,\n\n"
+        "Attached you find my blood pressure values, in csv format.\n"
         "Please reply to me the date of my next appointment\n\n"
         "Best regards,\n"
         "%s"

@@ -31,10 +31,37 @@
     <string name="email_message_hint">Üzenet...</string>
     <string name="email_subject_hint">Tárgy...</string>
     <string name="email_to_hint">Címzett(ek), vesszővel választva</string>
-    <string name="default_subject">%s - %s közti vérnyomásértékeim - %s</string>
-    <string name="default_message">
+    <string name="subject_default">%s - %s közti vérnyomásértékeim - %s</string>
+    <string name="subject_bound_low">"%s utáni vérnyomásértékeim - %s"</string>
+    <string name="subject_bound_up">"%s előtti vérnyomásértékeim - %s"</string>
+    <string name="subject_unbound">"Vérnyomásértékeim - %s"</string>
+    <string name="message_default">
         "Tisztelt Dr %s,\n\n"
         "Mellékelten küldöm a %s - %s közt mért vérnyomásértékeimet.\n"
+        "Kérem írja meg a következő időpontomat\n\n"
+        "Tisztelettel,\n"
+        "%s"
+    </string>
+
+    <string name="message_bound_low">
+        "Tisztelt Dr %s,\n\n"
+        "Mellékelten küldöm a %s után mért vérnyomásértékeimet.\n"
+        "Kérem írja meg a következő időpontomat\n\n"
+        "Tisztelettel,\n"
+        "%s"
+    </string>
+
+    <string name="message_bound_up">
+        "Tisztelt Dr %s,\n\n"
+        "Mellékelten küldöm a %s előtt mért vérnyomásértékeimet.\n"
+        "Kérem írja meg a következő időpontomat\n\n"
+        "Tisztelettel,\n"
+        "%s"
+    </string>
+
+    <string name="message_unbound">
+        "Tisztelt Dr %s,\n\n"
+        "Mellékelten küldöm a mért vérnyomásértékeimet.\n"
         "Kérem írja meg a következő időpontomat\n\n"
         "Tisztelettel,\n"
         "%s"
