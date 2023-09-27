@@ -11,6 +11,8 @@
     <string name="button_do_filter">Lássuk</string>
     <string name="label_sistholic">Szisztolés</string>
     <string name="label_diastholic">Diasztolés</string>
+    <string name="label_sistholic_short">Szisz</string>
+    <string name="label_diastholic_short">Dia</string>
     <string name="button_save">Mentés</string>
     <string name="button_exit">Kilépés</string>
     <string name="time_picker_button_caption">Válassz időpontot!</string>
@@ -22,14 +24,14 @@
     <string name="diastholic_autofill_hint">Alacsonyabb érték</string>
     <string name="date_picker_from_caption">Dátumtól</string>
     <string name="date_picker_to_caption">Dátumig</string>
-    <string name="read_on">mérve:</string>
+    <string name="read_on">"     "</string>
     <string name="label_date">Date</string>
     <string name="label_time">Time</string>
     <string name="ekg_content_description">EKG kép</string>
     <string name="title_send_email">Elküld</string>
     <string name="email_text_fixed">Text of the email, need to finish</string>
-    <string name="email_message_hint">Üzenet...</string>
-    <string name="email_subject_hint">Tárgy...</string>
+    <string name="email_message_hint">Üzenet…</string>
+    <string name="email_subject_hint">Tárgy…</string>
     <string name="email_to_hint">Címzett(ek), vesszővel választva</string>
     <string name="subject_default">%s - %s közti vérnyomásértékeim - %s</string>
     <string name="subject_bound_low">"%s utáni vérnyomásértékeim - %s"</string>
@@ -66,4 +68,5 @@
         "Tisztelettel,\n"
         "%s"
     </string>
+    <string name="label_bp">%d / %d</string>
 </resources>

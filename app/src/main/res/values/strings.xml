@@ -34,6 +34,8 @@
     <string name="button_do_filter">Filter</string>
     <string name="label_sistholic">Sistholic</string>
     <string name="label_diastholic">Diastholic</string>
+    <string name="label_sistholic_short">Sis</string>
+    <string name="label_diastholic_short">Dia</string>
     <string name="button_save">Save</string>
     <string name="button_exit">Quit</string>
     <string name="time_picker_button_caption">Pick a time!</string>
@@ -47,7 +49,7 @@
     <string name="diastholic_autofill_hint">Lower value goes here</string>
     <string name="date_picker_from_caption">Date From</string>
     <string name="date_picker_to_caption">Date To</string>
-    <string name="read_on">"read on:"</string>
+    <string name="read_on">"     "</string>
     <string name="at" translatable="false">\@</string>
     <string name="label_date">Date</string>
     <string name="label_time">Time</string>
@@ -97,4 +99,5 @@
         "Best regards,\n"
         "%s"
     </string>
+    <string name="label_bp">Sistholic/Diastholic</string>
 </resources>
