@@ -108,6 +108,13 @@
         <item name="android:typeface">sans</item>
     </style>
 
+    <style name="list_header_text_style">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="list_item_text_style">
+        <item name="android:textStyle">normal</item>
+    </style>
+
 <!--    <style name="Base.ThemeOverlay.Material3.Dialog" parent="@style/Theme.Material3.Dark.Dialog">-->
 <!--        <item name="colorAccent">@android:color/holo_orange_dark</item>-->
 <!--        <item name="android:textColorSecondary">@android:color/holo_blue_dark</item>-->

@@ -28,9 +28,11 @@ class ResultListActivity : Activity() {
         binding = ActivityResultListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         if(intent.getSerializableExtra ("results") is ArrayList<*> ) {
-            val results = intent.getSerializableExtra("results") as MutableList<BPItem>
-            results.sortWith( BPComparator() )
-            orderedResults=results
+
+            val results = intent.getSerializableExtra("results") as List<BPItem>
+
+            orderedResults=results.toMutableList()
+            orderedResults.sortWith( BPComparator() )
 
             Log.d("results","after sending...$results")
 

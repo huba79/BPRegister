@@ -87,6 +87,7 @@ class FilterActivity : Activity() {
             Log.d("results","criteria: $criteria")
             Log.d("results","Filtered, before sending...$filteredResults")
             val intent = Intent(this@FilterActivity,ResultListActivity::class.java)
+            intent.putExtra("dimens",filteredResults.size)
             intent.putExtra("results", filteredResults)
             intent.putExtra("dateFrom", criteria.dateFrom)
             intent.putExtra("dateTo", criteria.dateTo)
