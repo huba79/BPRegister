@@ -23,6 +23,9 @@
         <item name="colorError">@color/design_default_color_error</item>
         <item name="colorOnError">@color/material_dynamic_primary90</item>
 
+        <item name="actionBarStyle">@style/Theme.Material3.Light</item>
+        <item name="toolbarStyle">@style/ThemeOverlay.Material3.Toolbar.Surface</item>
+
 <!--&lt;!&ndash; unused theme colors &ndash;&gt;-->
 <!--        <item name="colorPrimaryVariant">@color/material_dynamic_primary30</item>-->
 <!--        <item name="colorSecondaryVariant">@color/material_dynamic_secondary30</item>-->

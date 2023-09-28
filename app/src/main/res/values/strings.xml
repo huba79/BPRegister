@@ -1,28 +1,4 @@
 <resources>
-    <string name="large_text" translatable="false">
-        "Material is the metaphor.\n\n"
-        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
-        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
-        "technologically advanced and open to imagination and magic.\n"
-        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
-        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
-        "flexibility of the material creates new affordances that supercede those in the physical "
-        "world, without breaking the rules of physics.\n"
-        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
-        "interact, and exist in space and in relation to each other. Realistic lighting shows "
-        "seams, divides space, and indicates moving parts.\n\n"
-    </string>
-    <string name="lorem_ipsum" translatable="false">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
-        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
-        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
-        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
-        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
-        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
-        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
-        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
-        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui.
-     </string>
     <string name="app_name">Bibizz BP register</string>
     <string name="title_activity_bp_list">Blood pressure historical data</string>
     <string name="action_settings">Settings</string>
@@ -53,6 +29,8 @@
     <string name="at" translatable="false">\@</string>
     <string name="label_date">Date</string>
     <string name="label_time">Time</string>
+    <string name="label_date_from">Date From</string>
+    <string name="label_date_to">Date To</string>
     <string name="ekg_content_description">EKG image</string>
     <string name="slash" translatable="false">/</string>
     <string name="smtp_host" translatable="false">smtp.gmail.com</string>
@@ -100,4 +78,5 @@
         "%s"
     </string>
     <string name="label_bp">Sistholic/Diastholic</string>
+    <string name="button_cancel">Cancel</string>
 </resources>

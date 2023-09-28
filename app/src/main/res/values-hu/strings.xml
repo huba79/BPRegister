@@ -69,4 +69,7 @@
         "%s"
     </string>
     <string name="label_bp">%d / %d</string>
+    <string name="label_date_from">Dátumtól</string>
+    <string name="label_date_to">Dátumig</string>
+    <string name="button_cancel">Mégsem</string>
 </resources>

@@ -12,6 +12,8 @@
     <dimen name="button_height">40dp</dimen>
     <dimen name="button_width">0dp</dimen>
 
+    <dimen name="button_margin_vertical">24dp</dimen>
+
     <dimen name="text_item_margin_horiz">16dp</dimen>
     <dimen name="text_item_margin_vert">4dp</dimen>
     <dimen name="text_item_padding_horiz">4dp</dimen>
