@@ -19,14 +19,12 @@
         <Button
             android:id="@+id/selectDateFromButton"
             style="@style/button_style_search"
-            android:layout_width="@dimen/text_item_width"
-            android:background="@drawable/button_borders" />
+            android:layout_width="@dimen/text_item_width" />
 
         <Button
             android:id="@+id/selectDateToButton"
             style="@style/button_style_search"
-            android:layout_width="@dimen/text_item_width"
-            android:background="@drawable/button_borders" />
+            android:layout_width="@dimen/text_item_width" />
     </LinearLayout>
 
     <LinearLayout
