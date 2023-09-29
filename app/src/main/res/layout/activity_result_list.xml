@@ -25,7 +25,7 @@
 
         <Button
             android:id="@+id/sendResultsInMailButton"
-            style="@style/button_mail_style"
+            style="@style/button_style_mail"
             android:layout_alignParentEnd="true"
             android:background="@android:drawable/ic_dialog_email" />
     </RelativeLayout>

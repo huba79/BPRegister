@@ -98,19 +98,8 @@
 
                     <EditText
                         android:id="@+id/sistholicEdit"
-                        style="@android:style/Widget.EditText"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
-                        android:layout_marginVertical="@dimen/text_item_margin_vert"
-                        android:layout_weight="3"
-                        android:autofillHints="@string/diastholic_autofill_hint"
-                        android:backgroundTint="@color/material_dynamic_secondary10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:textSize="@dimen/font_size_normal"
-                        android:textStyle="normal"
-                        android:typeface="sans" />
+                        style="@style/edit_text_on_card_style"
+                        android:autofillHints="@string/label_sistholic" />
 
                     <TextView
                         android:id="@+id/slashListItemView"
@@ -119,19 +108,8 @@
 
                     <EditText
                         android:id="@+id/diastholicEdit"
-                        style="@android:style/Widget.EditText"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
-                        android:layout_marginVertical="@dimen/text_item_margin_vert"
-                        android:layout_weight="3"
-                        android:autofillHints="@string/label_diastholic"
-                        android:backgroundTint="@color/material_dynamic_secondary10"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:textSize="@dimen/font_size_normal"
-                        android:textStyle="normal"
-                        android:typeface="sans" />
+                        style="@style/edit_text_on_card_style"
+                        android:autofillHints="@string/label_diastholic" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -181,44 +159,28 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/buttonsLayout"
-        style="@style/footer_style_default">
+        android:id="@+id/footer_layout"
+        style="@style/footer_style_default"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="40dp">
 
         <Button
             android:id="@+id/exitButton"
+            style="@style/button_style_footer"
             android:text="@string/button_exit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-            android:layout_marginVertical="@dimen/input_card_margin_vert"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:typeface="sans"
-            style="@style/button_style_default" />
+            android:typeface="sans" />
 
         <Button
             android:id="@+id/searchButton"
+            style="@style/button_style_footer"
             android:text="@string/search_button_caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-            android:layout_marginVertical="@dimen/input_card_margin_vert"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:typeface="sans"
-            style="@style/button_style_default" />
+            android:typeface="sans" />
 
         <Button
             android:id="@+id/saveButton"
+            style="@style/button_style_footer"
             android:text="@string/button_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
-            android:layout_marginVertical="@dimen/input_card_margin_vert"
-            android:layout_weight="1"
-            android:textStyle="bold"
-            android:typeface="sans"
-            style="@style/button_style_default"/>
+            android:typeface="sans" />
 
     </LinearLayout>
 
