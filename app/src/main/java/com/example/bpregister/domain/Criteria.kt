@@ -1,9 +1,10 @@
 package com.example.bpregister.domain
 
 import android.util.Log
+import java.io.Serializable
 import java.time.LocalDateTime
 
-data class Criteria(var dateFrom: LocalDateTime?, var dateTo:LocalDateTime?) {
+data class Criteria(var dateFrom: LocalDateTime?, var dateTo:LocalDateTime?):Serializable {
 
     fun normalize():Criteria {
         if ((dateFrom != null && dateTo != null)) {

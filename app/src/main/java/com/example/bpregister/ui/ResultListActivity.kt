@@ -9,61 +9,61 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bpregister.databinding.ActivityResultListBinding
 import com.example.bpregister.domain.BPComparator
 import com.example.bpregister.domain.BPItem
+import com.example.bpregister.domain.BPRepository
+import com.example.bpregister.domain.Criteria
 import com.example.bpregister.utils.MailHelper
-import java.time.LocalDateTime
 
 class ResultListActivity : Activity() {
-    private  var dateFrom:LocalDateTime?=null
-    private  var dateTo:LocalDateTime? =null
+
     private lateinit var orderedResults:MutableList<BPItem>
     private lateinit var binding: ActivityResultListBinding
 
     private lateinit var recipients:String
     private  lateinit var subject: String
     private lateinit var message: String
+    val repo = BPRepository
+    var criteria:Criteria = Criteria(null, null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityResultListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if(intent.getSerializableExtra ("results") is ArrayList<*> ) {
 
-            val results = intent.getSerializableExtra("results") as List<BPItem>
+            if (intent.getSerializableExtra("criteria") is Criteria) {
+                criteria = intent.getSerializableExtra("criteria") as Criteria
+                criteria = criteria.normalize()
 
-            orderedResults=results.toMutableList()
-            orderedResults.sortWith( BPComparator() )
+                orderedResults =  repo.filterResults(repo.readFromFile(this@ResultListActivity),criteria)
+                orderedResults.toMutableList().sortWith( BPComparator() )
+                Log.d("orderedFilteredResults", orderedResults.toString())
 
-            Log.d("results","after sending...$results")
+                val adapter = ResultsAdapter(this@ResultListActivity,orderedResults)
+                binding.resultsRecyclerView.layoutManager=LinearLayoutManager(this@ResultListActivity)
+                binding.resultsRecyclerView.adapter=adapter
 
-            val adapter = ResultsAdapter(this@ResultListActivity,results)
-            binding.resultsRecyclerView.layoutManager=LinearLayoutManager(this@ResultListActivity)
-            binding.resultsRecyclerView.adapter=adapter
-        } else {
-            Toast.makeText(this@ResultListActivity,"Incorrect parameter!",Toast.LENGTH_SHORT).show()
-        }
+            }
+            else {
+                Toast.makeText(this@ResultListActivity,"Incorrect parameter!",Toast.LENGTH_SHORT).show()
 
-        dateFrom = if (intent.getSerializableExtra("dateFrom") is LocalDateTime) {
-            intent.getSerializableExtra("dateFrom") as LocalDateTime
-        } else null
+                orderedResults = BPRepository.readFromFile(this@ResultListActivity)
+                orderedResults.toMutableList().sortWith( BPComparator() )
 
+                Log.d("orderedUnFilteredResults", orderedResults.toString())
 
-        dateTo = if (intent.getSerializableExtra("dateTo") is LocalDateTime) {
-            intent.getSerializableExtra("dateTo") as LocalDateTime
-        } else null
-
-        orderedResults = if(intent.getSerializableExtra("results") is List<*>) {
-            intent.getSerializableExtra("results") as MutableList<BPItem>
-        } else listOf<BPItem>() as MutableList<BPItem>
+                val adapter = ResultsAdapter(this@ResultListActivity,orderedResults)
+                binding.resultsRecyclerView.layoutManager=LinearLayoutManager(this@ResultListActivity)
+                binding.resultsRecyclerView.adapter=adapter
+            }
 
         binding.sendResultsInMailButton.setOnClickListener {
-
             recipients= MailHelper.getRecipient().trim()
-            subject = MailHelper.getSubject(this@ResultListActivity, dateFrom, dateTo).trim()
-            message = MailHelper.getBody(this@ResultListActivity,dateFrom,dateTo).trim()
+            subject = MailHelper.getSubject(this@ResultListActivity, criteria.dateFrom, criteria.dateTo).trim()
+            message = MailHelper.getBody(this@ResultListActivity, criteria.dateFrom, criteria.dateTo).trim()
             sendEmail(recipients,subject,message)
-
         }
+
+
 
 //        setSupportActionBar(findViewById(R.id.toolbar))
 //        binding.toolbarLayout.title = title

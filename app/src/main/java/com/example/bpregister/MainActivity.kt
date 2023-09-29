@@ -24,6 +24,7 @@ import com.example.bpregister.domain.Criteria
 import com.example.bpregister.ui.ResultListActivity
 import com.example.bpregister.utils.DateUtils
 import com.example.bpregister.utils.ScreenProps
+import java.io.Serializable
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -34,8 +35,7 @@ class MainActivity : Activity() {
     private lateinit var filterBinding: CardFilterBinding
     private lateinit var blodPressureDataset : BPItem
     private val repo = BPRepository
-    private  var results:ArrayList<BPItem> = ArrayList()
-    val criteria = Criteria(null,null)
+    private var searchCriteria = Criteria(null,null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -126,8 +126,6 @@ class MainActivity : Activity() {
 
             filterBinding = CardFilterBinding.inflate(LayoutInflater.from(this@MainActivity))
 
-            val searchCriteria = Criteria(null, null)
-
             val popupWidth = LayoutParams.MATCH_PARENT
             val popupHeight = LayoutParams.WRAP_CONTENT
             val filterPopup = PopupWindow(filterBinding.root.rootView, popupWidth, popupHeight).also {
@@ -143,6 +141,7 @@ class MainActivity : Activity() {
 
             searchDateFromButton.text = resources.getString(R.string.label_date_from)
             searchDateToButton.text = resources.getString(R.string.label_date_to)
+
             searchDateFromButton.setOnClickListener {
             val pickerDialog = DatePickerDialog(
                 this, ScreenProps.getDialogThemeAdvice(resources),
@@ -170,17 +169,11 @@ class MainActivity : Activity() {
 
             searchFilterButton.setOnClickListener {
 
-                criteria.normalize()
-                val filteredResults = BPRepository.filterResults(BPRepository.readFromFile(applicationContext), criteria)
-                Log.d("results", "unfiltered: $results")
-                Log.d("results", "criteria: $criteria")
-                Log.d("results", "Filtered, before sending...$filteredResults")
+                searchCriteria.normalize()
+                Log.d("criteria", "criteria: $searchCriteria")
 
                 val intent = Intent(this@MainActivity, ResultListActivity::class.java)
-                intent.putExtra("dimens", filteredResults.size)
-                intent.putExtra("results", filteredResults)
-                intent.putExtra("dateFrom", criteria.dateFrom)
-                intent.putExtra("dateTo", criteria.dateTo)
+                intent.putExtra("criteria", searchCriteria as Serializable)
 
                 filterPopup.dismiss()
                 startActivity(intent)
