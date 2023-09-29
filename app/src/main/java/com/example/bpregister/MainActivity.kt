@@ -187,6 +187,10 @@ class MainActivity : Activity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        searchCriteria = Criteria(null,null)
+    }
     private fun formDataIsValid(): Boolean {
         return !(layoutBinding.sistholicEdit.text.isBlank()
                 ||layoutBinding.diastholicEdit.text.isBlank()
