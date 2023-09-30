@@ -1,4 +1,4 @@
-package com.example.bpregister.domain
+package com.example.bpregister.domain.deprecated
 
 import java.io.Serializable
 import java.time.LocalDateTime

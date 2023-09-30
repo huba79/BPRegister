@@ -18,8 +18,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
 import com.example.bpregister.databinding.ActivityMainBinding
 import com.example.bpregister.databinding.CardFilterBinding
-import com.example.bpregister.domain.BPItem
-import com.example.bpregister.domain.BPRepository
+import com.example.bpregister.domain.deprecated.BPItem
+import com.example.bpregister.domain.deprecated.BPRepository
 import com.example.bpregister.domain.Criteria
 import com.example.bpregister.ui.ResultListActivity
 import com.example.bpregister.utils.DateUtils

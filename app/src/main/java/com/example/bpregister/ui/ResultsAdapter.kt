@@ -10,7 +10,7 @@ import androidx.viewbinding.ViewBinding
 import com.example.bpregister.R
 import com.example.bpregister.databinding.CardItemBinding
 import com.example.bpregister.databinding.CardHeaderBinding
-import com.example.bpregister.domain.BPItem
+import com.example.bpregister.domain.deprecated.BPItem
 import com.example.bpregister.utils.DateUtils
 
 class ResultsAdapter(private val context: Context, private val bpDataList: List<BPItem>) : Adapter<ResultsAdapter.ViewHolder>() {

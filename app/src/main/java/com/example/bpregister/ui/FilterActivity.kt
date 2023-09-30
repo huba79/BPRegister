@@ -8,8 +8,8 @@ import android.os.Bundle
 import android.util.Log
 import com.example.bpregister.R
 import com.example.bpregister.databinding.ActivityFilterBinding
-import com.example.bpregister.domain.BPItem
-import com.example.bpregister.domain.BPRepository
+import com.example.bpregister.domain.deprecated.BPItem
+import com.example.bpregister.domain.deprecated.BPRepository
 import com.example.bpregister.domain.Criteria
 import com.example.bpregister.utils.DateUtils
 import com.example.bpregister.utils.ScreenProps
@@ -73,7 +73,7 @@ class FilterActivity : Activity() {
         }
 
         binding.doFilterButton.setOnClickListener {
-            results = BPRepository.readFromFile(applicationContext)
+            results = BPRepository.readAllFromFile(applicationContext)
 
             if((criteria.dateFrom!=null && criteria.dateTo!=null)) {
                 if(criteria.dateFrom!!.isAfter(criteria.dateTo!!)   ) {
