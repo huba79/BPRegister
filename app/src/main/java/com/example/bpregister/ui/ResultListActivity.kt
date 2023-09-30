@@ -34,7 +34,7 @@ class ResultListActivity : Activity() {
                 criteria = intent.getSerializableExtra("criteria") as Criteria
                 criteria = criteria.normalize()
 
-                orderedResults =  repo.filterResults(repo.readFromFile(this@ResultListActivity),criteria)
+                orderedResults =  repo.filterResults(repo.readAllFromFile(this@ResultListActivity),criteria)
                 orderedResults.toMutableList().sortWith( BPComparator() )
                 Log.d("orderedFilteredResults", orderedResults.toString())
 
@@ -46,7 +46,7 @@ class ResultListActivity : Activity() {
             else {
                 Toast.makeText(this@ResultListActivity,"Incorrect parameter!",Toast.LENGTH_SHORT).show()
 
-                orderedResults = BPRepository.readFromFile(this@ResultListActivity)
+                orderedResults = BPRepository.readAllFromFile(this@ResultListActivity)
                 orderedResults.toMutableList().sortWith( BPComparator() )
 
                 Log.d("orderedUnFilteredResults", orderedResults.toString())

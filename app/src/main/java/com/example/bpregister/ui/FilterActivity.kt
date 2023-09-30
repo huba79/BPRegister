@@ -73,7 +73,7 @@ class FilterActivity : Activity() {
         }
 
         binding.doFilterButton.setOnClickListener {
-            results = BPRepository.readFromFile(applicationContext)
+            results = BPRepository.readAllFromFile(applicationContext)
 
             if((criteria.dateFrom!=null && criteria.dateTo!=null)) {
                 if(criteria.dateFrom!!.isAfter(criteria.dateTo!!)   ) {
