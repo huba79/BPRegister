@@ -3,6 +3,7 @@ package com.example.bpregister.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.bpregister.domain.BPEntity
@@ -24,6 +25,7 @@ class BpViewModel(private val repo:BpRepository): ViewModel() {
     }
 
     fun save(entity:BPEntity) = viewModelScope.launch(Dispatchers.IO){
+        currentRecord.value = entity
         repo.insert(entity)
     }
 
@@ -31,8 +33,18 @@ class BpViewModel(private val repo:BpRepository): ViewModel() {
         currentRecord = repo.getById(id).asLiveData() as MutableLiveData<BPEntity>
     }
 
-
-
-
+    companion object {
+        fun provideFactory(
+            myRepository: BpRepository,
+        ): ViewModelProvider.AndroidViewModelFactory =
+            object : ViewModelProvider.AndroidViewModelFactory() {
+                @Suppress("UNCHECKED_CAST")
+                override fun <T : ViewModel> create(
+                    modelClass: Class<T>
+                ): T {
+                    return BpViewModel(myRepository) as T
+                }
+            }
+    }
 
 }

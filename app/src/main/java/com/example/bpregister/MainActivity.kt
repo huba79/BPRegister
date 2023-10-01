@@ -16,12 +16,16 @@ import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.example.bpregister.databinding.ActivityMainBinding
 import com.example.bpregister.databinding.CardFilterBinding
-import com.example.bpregister.domain.deprecated.BPItem
-import com.example.bpregister.domain.deprecated.BPRepository
+import com.example.bpregister.domain.BPEntity
 import com.example.bpregister.domain.Criteria
+import com.example.bpregister.room.BPApplication
+import com.example.bpregister.room.BpRepository
 import com.example.bpregister.ui.ResultListActivity
+import com.example.bpregister.ui.viewmodel.BpViewModel
 import com.example.bpregister.utils.DateUtils
 import com.example.bpregister.utils.ScreenProps
 import java.io.Serializable
@@ -31,11 +35,12 @@ import java.time.format.DateTimeFormatter
 
 
 class MainActivity : Activity() {
+    private lateinit var repo: BpRepository
     private lateinit var layoutBinding : ActivityMainBinding
     private lateinit var filterBinding: CardFilterBinding
-    private lateinit var blodPressureDataset : BPItem
-    private val repo = BPRepository
+    private lateinit var bpData : BPEntity
     private var searchCriteria = Criteria(null,null)
+    private lateinit var bpViewModel: BpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +48,10 @@ class MainActivity : Activity() {
 
         layoutBinding = ActivityMainBinding.inflate(LayoutInflater.from(this@MainActivity))
         setContentView(layoutBinding.root)
+
+        val viewModelStoreOwner = layoutBinding.root.findViewTreeViewModelStoreOwner()!!
+        val viewModelFactory = BpViewModel.provideFactory((application as BPApplication).repo)
+        bpViewModel = ViewModelProvider(viewModelStoreOwner,viewModelFactory )[BpViewModel::class.java]
 
         val datePickerButton = layoutBinding.datePickerButton
         val timePickerButton = layoutBinding.timePickerButton
@@ -97,12 +106,12 @@ class MainActivity : Activity() {
 
         layoutBinding.saveButton.setOnClickListener {
             if (formDataIsValid()) {
-                blodPressureDataset = BPItem(
+                bpData = BPEntity(
                     Integer.parseInt(layoutBinding.sistholicEdit.text.toString()),
                     Integer.parseInt(layoutBinding.diastholicEdit.text.toString()),
                     selectedDate, selectedTime
                 )
-                repo.writeToFile(this@MainActivity, blodPressureDataset)
+                bpViewModel.save(bpData)
                 Toast.makeText(
                     this@MainActivity,
                     getString(R.string.blood_pressure_values_saved_successfully), Toast.LENGTH_SHORT

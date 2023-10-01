@@ -1,5 +1,3 @@
-//import com.android.build.api.dsl.Packaging
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -40,9 +38,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-//    fun Packaging.() {
-//        resources.excludes.add("META-INF/atomicfu.kotlin_module")
-//    }
 
     kotlinOptions {
         jvmTarget = "17"
@@ -57,21 +52,16 @@ dependencies {
     annotationProcessor( "androidx.room:room-compiler:2.5.2")
     // To use Kotlin Symbol Processing (KSP)
     annotationProcessor( "androidx.room:room-compiler:2.5.2")
-//    // optional - RxJava2 support for Room
-//    implementation( "androidx.room:room-rxjava2:2.5.2")
-//    // optional - RxJava3 support for Room
-//    implementation( "androidx.room:room-rxjava3:2.5.2")
-//    // optional - Guava support for Room, including Optional and ListenableFuture
-//    implementation( "androidx.room:room-guava:2.5.2")
-    // optional - Paging 3 Integration
     implementation( "androidx.room:room-paging:2.5.2")
     //--room Database dependencies end
-
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.activity:activity-ktx:1.7.2")
+
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
+//    implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.gridlayout:gridlayout:1.0.0")
@@ -81,6 +71,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
     // optional - Room Test helpers
     testImplementation("androidx.room:room-testing:2.5.2")
 
