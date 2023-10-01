@@ -21,7 +21,7 @@ import com.example.bpregister.databinding.CardFilterBinding
 import com.example.bpregister.domain.BPEntity
 import com.example.bpregister.domain.Criteria
 import com.example.bpregister.room.BPApplication
-import com.example.bpregister.ui.ResultListActivity
+import com.example.bpregister.ui.activities.ResultListActivity
 import com.example.bpregister.ui.viewmodel.BpViewModel
 import com.example.bpregister.ui.viewmodel.BpViewModel.Factory.provideFactory
 import com.example.bpregister.utils.DateUtils
@@ -36,7 +36,6 @@ class MainActivity : Activity() {
     private lateinit var filterBinding: CardFilterBinding
     private lateinit var bpData : BPEntity
     private var searchCriteria = Criteria(null,null)
-
     private lateinit var bpViewModel: BpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,11 +45,6 @@ class MainActivity : Activity() {
         layoutBinding = ActivityMainBinding.inflate(LayoutInflater.from(this@MainActivity))
         setContentView(layoutBinding.root)
 
-//        val viewModelStoreOwner = layoutBinding.root.rootView.findViewTreeViewModelStoreOwner()
-//        val bpApplication:BPApplication = application as BPApplication
-//        val viewModelFactory = provideFactory(bpApplication.repo)
-//
-//        bpViewModel = ViewModelProvider(viewModelStoreOwner!!,viewModelFactory )[BpViewModel::class.java]
         bpViewModel = provideFactory((this.application as BPApplication).repo).create(BpViewModel::class.java)
 
         val datePickerButton = layoutBinding.datePickerButton

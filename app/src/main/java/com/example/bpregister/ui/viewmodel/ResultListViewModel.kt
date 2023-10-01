@@ -1,6 +1,7 @@
 package com.example.bpregister.ui.viewmodel
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
@@ -12,17 +13,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ResultListViewModel(private val repo:BpRepository): ViewModel() {
-    private lateinit var filteredBpRecords: LiveData<List<BPEntity>>
+    var results: LiveData<List<BPEntity>> = MutableLiveData<List<BPEntity>>()
     var currentCriteria: Criteria = Criteria(null, null)
 
     fun getFiltered() = viewModelScope.launch(Dispatchers.IO){
-        filteredBpRecords =  repo.getFiltered(currentCriteria.dateFrom, currentCriteria.dateTo).asLiveData()
+        results =  repo.getFiltered(currentCriteria.dateFrom, currentCriteria.dateTo).asLiveData()
     }
-
-    fun getAll(criteria:Criteria) = viewModelScope.launch(Dispatchers.IO){
-        filteredBpRecords =  repo.getAll().asLiveData()
+    fun getAll() = viewModelScope.launch(Dispatchers.IO){
+        results =  repo.getAll().asLiveData()
     }
-
     companion object Factory {
         fun provideFactory(
             myRepository: BpRepository,

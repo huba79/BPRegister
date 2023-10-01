@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:theme="@style/Base.Theme.BPRegister"
-    tools:context=".ui.ResultListActivity">
+    tools:context=".ui.activities.ResultListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/resultsRecyclerView"
