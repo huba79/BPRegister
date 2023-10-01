@@ -1,28 +1,28 @@
-package com.example.bpregister.ui
+package com.example.bpregister.ui.activities
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bpregister.databinding.ActivityResultListBinding
-import com.example.bpregister.domain.BPComparator
-import com.example.bpregister.domain.deprecated.BPItem
-import com.example.bpregister.domain.deprecated.BPRepository
+import com.example.bpregister.domain.BPEntity
 import com.example.bpregister.domain.Criteria
+import com.example.bpregister.room.BPApplication
+import com.example.bpregister.ui.viewmodel.ResultListViewModel
 import com.example.bpregister.utils.MailHelper
 
-class ResultListActivity : Activity() {
+class ResultListActivity : AppCompatActivity() {
 
-    private lateinit var orderedResults:MutableList<BPItem>
     private lateinit var binding: ActivityResultListBinding
-
+    private lateinit var resultsViewModel: ResultListViewModel
     private lateinit var recipients:String
     private  lateinit var subject: String
     private lateinit var message: String
-    val repo = BPRepository
-    var criteria:Criteria = Criteria(null, null)
+
+    private val adapter = ResultsAdapter(this@ResultListActivity)
+    private var criteria:Criteria = Criteria(null, null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,31 +30,27 @@ class ResultListActivity : Activity() {
         binding = ActivityResultListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-            if (intent.getSerializableExtra("criteria") is Criteria) {
-                criteria = intent.getSerializableExtra("criteria") as Criteria
-                criteria = criteria.normalize()
+        resultsViewModel = ResultListViewModel.provideFactory((this.application as BPApplication).repo).create(ResultListViewModel::class.java)
 
-                orderedResults =  repo.filterResults(repo.readAllFromFile(this@ResultListActivity),criteria)
-                orderedResults.toMutableList().sortWith( BPComparator() )
-                Log.d("orderedFilteredResults", orderedResults.toString())
+        resultsViewModel.results.observe(this@ResultListActivity) {
+            Log.d("On Results changed","Actual criteria: ${criteria}")
+            Log.d("On Results changed","Updated results: ${logList(it)}")
+            adapter.setResults(it)
+        }
+        if (intent.getSerializableExtra("criteria") is Criteria) {
+            criteria = intent.getSerializableExtra("criteria") as Criteria
+            Log.d("criteria",criteria.toString())
+            resultsViewModel.currentCriteria = criteria
+            Log.i("Fetching results with","Criteria from: ${criteria.dateFrom}, to: ${criteria.dateTo}")
+            resultsViewModel.getFiltered()
+        }
+        else {
+            Toast.makeText(this@ResultListActivity,"Incorrect parameter!",Toast.LENGTH_SHORT).show()
+            resultsViewModel.getAll()
+        }
 
-                val adapter = ResultsAdapter(this@ResultListActivity,orderedResults)
-                binding.resultsRecyclerView.layoutManager=LinearLayoutManager(this@ResultListActivity)
-                binding.resultsRecyclerView.adapter=adapter
-
-            }
-            else {
-                Toast.makeText(this@ResultListActivity,"Incorrect parameter!",Toast.LENGTH_SHORT).show()
-
-                orderedResults = BPRepository.readAllFromFile(this@ResultListActivity)
-                orderedResults.toMutableList().sortWith( BPComparator() )
-
-                Log.d("orderedUnFilteredResults", orderedResults.toString())
-
-                val adapter = ResultsAdapter(this@ResultListActivity,orderedResults)
-                binding.resultsRecyclerView.layoutManager=LinearLayoutManager(this@ResultListActivity)
-                binding.resultsRecyclerView.adapter=adapter
-            }
+        binding.resultsRecyclerView.layoutManager=LinearLayoutManager(this@ResultListActivity)
+        binding.resultsRecyclerView.adapter=adapter
 
         binding.sendResultsInMailButton.setOnClickListener {
             recipients= MailHelper.getRecipient().trim()
@@ -62,9 +58,6 @@ class ResultListActivity : Activity() {
             message = MailHelper.getBody(this@ResultListActivity, criteria.dateFrom, criteria.dateTo).trim()
             sendEmail(recipients,subject,message)
         }
-
-
-
 //        setSupportActionBar(findViewById(R.id.toolbar))
 //        binding.toolbarLayout.title = title
 //        binding.fab.setOnClickListener { view ->
@@ -90,5 +83,15 @@ class ResultListActivity : Activity() {
             e.printStackTrace()
         }
 
+    }
+    fun logList(list:List<BPEntity>?):String{
+        var out = ""
+        if (list!=null) {
+            for(item: BPEntity in list){
+                out += item.toString()
+            }
+            return out
+        }
+        return out
     }
 }

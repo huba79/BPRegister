@@ -12,11 +12,11 @@ interface BPItemDao {
     suspend fun addItem(entity: BPEntity)
 //    @Delete
 //    suspend fun deleteItem(entity: BPEntity)
-    @Query("select * from bp_items where id = :id order by id asc")
+    @Query("select * from bp_items where id = :id order by id desc")
     fun getBpItemById(id:Int):Flow<BPEntity>
-    @Query("select * from bp_items order by id asc")
+    @Query("select * from bp_items order by  date, time desc")
     fun getAllBpItems(): Flow<List<BPEntity>>
-    @Query("select * from bp_items where date>= :dateFrom and date<= :dateTo order by date, time")
+    @Query("select * from bp_items where date>= :dateFrom and date<= :dateTo order by date, time desc")
     fun getBpItemsFilteredByDateTime(dateFrom:LocalDateTime?, dateTo:LocalDateTime?): Flow<List<BPEntity>>
 
 }

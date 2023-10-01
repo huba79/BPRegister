@@ -1,6 +1,7 @@
 package com.example.bpregister.room
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -20,18 +21,21 @@ abstract class BpDatabase: RoomDatabase() {
     companion object {
         private var INSTANCE:BpDatabase? = null
         fun getDatabase(context: Context, scope:CoroutineScope):BpDatabase {
+            Log.i("BpDatabase","initializing")
             return INSTANCE ?: synchronized(this) {
                 val instance =  Room.databaseBuilder(context, BpDatabase::class.java, "bp_database")
                     .addCallback(BpDatabaseCallback(scope))
                     .build()
+            Log.d("BPDatabase","isOpen: ${instance.isOpen}")
                 INSTANCE=instance
                 instance
             }
         }
     }
 
-    private class BpDatabaseCallback(private val scope: CoroutineScope):RoomDatabase.Callback(){
+    private class BpDatabaseCallback(private val scope: CoroutineScope):Callback(){
         override fun onCreate(db:SupportSQLiteDatabase){
+            //setting up initial data if db does not exist
             super.onCreate(db)
             INSTANCE?.let{database->
                 scope.launch {
