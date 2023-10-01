@@ -6,7 +6,6 @@ import androidx.room.Query
 import com.example.bpregister.domain.BPEntity
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDateTime
-
 @Dao
 interface BPItemDao {
     @Insert
@@ -14,10 +13,10 @@ interface BPItemDao {
 //    @Delete
 //    suspend fun deleteItem(entity: BPEntity)
     @Query("select * from bp_items where id = :id order by id asc")
-    suspend fun getBpItemById(id:Int):Flow<BPEntity>
+    fun getBpItemById(id:Int):Flow<BPEntity>
     @Query("select * from bp_items order by id asc")
-    suspend fun getAllBpItems(): Flow<List<BPEntity>>
-    @Query("select * from bp_items where localDate>= :dateFrom and localDate<= :dateTo order by localDate, localTime")
-    suspend fun getBpItemsFilteredByDateTime(dateFrom:LocalDateTime?, dateTo:LocalDateTime?): Flow<List<BPEntity>>
+    fun getAllBpItems(): Flow<List<BPEntity>>
+    @Query("select * from bp_items where date>= :dateFrom and date<= :dateTo order by date, time")
+    fun getBpItemsFilteredByDateTime(dateFrom:LocalDateTime?, dateTo:LocalDateTime?): Flow<List<BPEntity>>
 
 }

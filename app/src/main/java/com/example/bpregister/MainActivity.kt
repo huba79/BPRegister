@@ -16,30 +16,27 @@ import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.example.bpregister.databinding.ActivityMainBinding
 import com.example.bpregister.databinding.CardFilterBinding
 import com.example.bpregister.domain.BPEntity
 import com.example.bpregister.domain.Criteria
 import com.example.bpregister.room.BPApplication
-import com.example.bpregister.room.BpRepository
 import com.example.bpregister.ui.ResultListActivity
 import com.example.bpregister.ui.viewmodel.BpViewModel
+import com.example.bpregister.ui.viewmodel.BpViewModel.Factory.provideFactory
 import com.example.bpregister.utils.DateUtils
 import com.example.bpregister.utils.ScreenProps
 import java.io.Serializable
 import java.time.LocalDateTime
 import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 
 
 class MainActivity : Activity() {
-    private lateinit var repo: BpRepository
     private lateinit var layoutBinding : ActivityMainBinding
     private lateinit var filterBinding: CardFilterBinding
     private lateinit var bpData : BPEntity
     private var searchCriteria = Criteria(null,null)
+
     private lateinit var bpViewModel: BpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,9 +46,12 @@ class MainActivity : Activity() {
         layoutBinding = ActivityMainBinding.inflate(LayoutInflater.from(this@MainActivity))
         setContentView(layoutBinding.root)
 
-        val viewModelStoreOwner = layoutBinding.root.findViewTreeViewModelStoreOwner()!!
-        val viewModelFactory = BpViewModel.provideFactory((application as BPApplication).repo)
-        bpViewModel = ViewModelProvider(viewModelStoreOwner,viewModelFactory )[BpViewModel::class.java]
+//        val viewModelStoreOwner = layoutBinding.root.rootView.findViewTreeViewModelStoreOwner()
+//        val bpApplication:BPApplication = application as BPApplication
+//        val viewModelFactory = provideFactory(bpApplication.repo)
+//
+//        bpViewModel = ViewModelProvider(viewModelStoreOwner!!,viewModelFactory )[BpViewModel::class.java]
+        bpViewModel = provideFactory((this.application as BPApplication).repo).create(BpViewModel::class.java)
 
         val datePickerButton = layoutBinding.datePickerButton
         val timePickerButton = layoutBinding.timePickerButton
@@ -61,11 +61,12 @@ class MainActivity : Activity() {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        var selectedDate = LocalDateTime.now()
-        var selectedTime = LocalTime.now()
 
-        datePickerButton.text = getString(R.string.date_visual_formatter, year, month + 1, day)
-        timePickerButton.text = selectedDate.format(DateTimeFormatter.ofPattern("HH:mm"))
+        bpViewModel.setDateOfCurrent(LocalDateTime.now())
+        bpViewModel.setTimeOfCurrent(LocalTime.now())
+
+//        datePickerButton.text = getString(R.string.date_visual_formatter, year, month + 1, day)
+//        timePickerButton.text = selectedDate.format(DateTimeFormatter.ofPattern("HH:mm"))
 
         datePickerButton.setOnClickListener {
             val pickerDialog = DatePickerDialog(
@@ -73,13 +74,15 @@ class MainActivity : Activity() {
                 { _, pYear, pMonth, pDay ->
                     run {
                         datePickerButton.text = DateUtils.toDisplayableDate(pYear, pMonth + 1, pDay)
-                        selectedDate = LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0)
-                        Log.d("date", "date: $selectedDate was selected...")
+//                        selectedDate = LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0)
+                        bpViewModel.setDateOfCurrent(LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0))
+                        Log.d("date", "date: $bpViewModel.ge was selected...")
                     }
                 }, year, month, day
             )
             pickerDialog.show()
         }
+
         timePickerButton.setOnClickListener {
 
             val hour = calendar.get(Calendar.HOUR_OF_DAY)
@@ -93,8 +96,9 @@ class MainActivity : Activity() {
                     run {
                         timePickerButton.text =
                             getString(R.string.time_visual_formatter, pHour, pMinute)
-                        selectedTime = LocalTime.of(pHour, pMinute)
-                        Log.d("date", "time: ${selectedTime.toString()} was selected...")
+//                        selectedTime = LocalTime.of(pHour, pMinute)
+                        bpViewModel.setTimeOfCurrent(LocalTime.of(pHour, pMinute))
+                        Log.d("date", "time: ${bpViewModel.getCurrent()!!.time.toString()} was selected...")
                     }
                 },
                 hour,
@@ -109,7 +113,7 @@ class MainActivity : Activity() {
                 bpData = BPEntity(
                     Integer.parseInt(layoutBinding.sistholicEdit.text.toString()),
                     Integer.parseInt(layoutBinding.diastholicEdit.text.toString()),
-                    selectedDate, selectedTime
+                    bpViewModel.getCurrent()!!.date, bpViewModel.getCurrent()!!.time
                 )
                 bpViewModel.save(bpData)
                 Toast.makeText(
@@ -117,7 +121,8 @@ class MainActivity : Activity() {
                     getString(R.string.blood_pressure_values_saved_successfully), Toast.LENGTH_SHORT
                 ).show()
                 resetInputBpData()
-            } else {
+            }
+            else {
                 Toast.makeText(
                     this@MainActivity,
                     "Please enter your blood pressure data!",
@@ -156,9 +161,9 @@ class MainActivity : Activity() {
                 this, ScreenProps.getDialogThemeAdvice(resources),
                 { _, pYear, pMonth, pDay ->
                     run {
-                        searchDateFromButton.text =
-                            DateUtils.toDisplayableDate(pYear, pMonth + 1, pDay)
-                        searchCriteria.dateFrom = LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0)
+                        searchDateFromButton.text = DateUtils.toDisplayableDate(pYear, pMonth + 1, pDay)
+//                        searchCriteria.dateFrom = LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0)
+                        bpViewModel.currentCriteria.dateFrom=LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0)
                     }
                 }, year, month, day)
             pickerDialog.show()
@@ -170,16 +175,17 @@ class MainActivity : Activity() {
                     { _, pYear, pMonth, pDay ->
                         run {
                             searchDateToButton.text = DateUtils.toDisplayableDate(pYear, pMonth + 1, pDay)
-                            searchCriteria.dateTo = LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0)
+//                            searchCriteria.dateTo = LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0)
+                            bpViewModel.currentCriteria.dateTo = LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0)
                         }
                     }, year, month, day)
                 pickerDialog.show()
             }
 
             searchFilterButton.setOnClickListener {
-
-                searchCriteria.normalize()
-                Log.d("criteria", "criteria: $searchCriteria")
+                Log.d("criteria", "saved criteria: ${bpViewModel.currentCriteria}")
+                bpViewModel.currentCriteria.normalize()
+                Log.d("criteria", "normalized criteria: ${bpViewModel.currentCriteria}")
 
                 val intent = Intent(this@MainActivity, ResultListActivity::class.java)
                 intent.putExtra("criteria", searchCriteria as Serializable)
@@ -198,7 +204,18 @@ class MainActivity : Activity() {
 
     override fun onResume() {
         super.onResume()
-        searchCriteria = Criteria(null,null)
+        bpViewModel.currentCriteria.let {
+            searchCriteria = bpViewModel.currentCriteria
+        }
+        bpViewModel.getCurrent()?.let {
+            layoutBinding.datePickerButton.text =
+                DateUtils.toDisplayableDate(bpViewModel.getCurrent()!!.date.year, bpViewModel.getCurrent()!!.date.month.value, bpViewModel.getCurrent()!!.date.dayOfMonth)
+            layoutBinding.timePickerButton.text =
+                DateUtils.toDisplayableTime(bpViewModel.getCurrent()!!.time.hour,bpViewModel.getCurrent()!!.time.minute)
+            layoutBinding.sistholicEdit.setText(bpViewModel.getCurrent()!!.sistholic.toString()?:"")
+            layoutBinding.diastholicEdit.setText(bpViewModel.getCurrent()!!.diastholic.toString()?:"")
+        }
+
     }
     private fun formDataIsValid(): Boolean {
         return !(layoutBinding.sistholicEdit.text.isBlank()

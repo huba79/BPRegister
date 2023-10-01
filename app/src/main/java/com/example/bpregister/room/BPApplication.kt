@@ -5,6 +5,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 
 class BPApplication:Application() {
+
     val db :BpDatabase by lazy {
         BpDatabase.getDatabase(this,applicationScope)
     }
@@ -12,5 +13,5 @@ class BPApplication:Application() {
         BpRepository(db.getBpItemDao())
     }
 
-    val applicationScope = CoroutineScope(SupervisorJob())
+    private val applicationScope = CoroutineScope(SupervisorJob())
 }
