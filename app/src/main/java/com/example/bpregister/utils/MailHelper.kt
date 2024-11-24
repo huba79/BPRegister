@@ -12,15 +12,19 @@ object MailHelper {
 
     //TODO : apply strings according to the existence of date constraints
     fun getBody(context: Context, dateFrom :LocalDateTime?, dateTo:LocalDateTime?):String{
-        val from = if(dateFrom !=null){dateFrom!!.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))} else "null"
-        val to = if(dateTo !=null){dateTo!!.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))} else "null"
+        val from = if(dateFrom !=null){
+            dateFrom.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))} else "null"
+        val to = if(dateTo !=null){
+            dateTo.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))} else "null"
 
         return context.resources.getString(R.string.message_default, recipientName,from,to, senderName)
     }
 
     fun getSubject(context: Context, dateFrom :LocalDateTime?, dateTo:LocalDateTime?):String{
-        val from = if(dateFrom !=null){dateFrom!!.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))} else "null"
-        val to = if(dateTo !=null){dateTo!!.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))} else "null"
+        val from = if(dateFrom !=null){
+            dateFrom.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))} else "null"
+        val to = if(dateTo !=null){
+            dateTo.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))} else "null"
 
         return context.resources.getString(R.string.subject_default,from,to, senderName)
     }

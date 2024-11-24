@@ -18,7 +18,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
 import com.example.bpregister.databinding.ActivityMainBinding
 import com.example.bpregister.databinding.CardFilterBinding
-import com.example.bpregister.domain.BPEntity
+import com.example.bpregister.domain.BloodPressureReading
 import com.example.bpregister.domain.Criteria
 import com.example.bpregister.room.BPApplication
 import com.example.bpregister.ui.activities.ResultListActivity
@@ -32,9 +32,9 @@ import java.time.LocalTime
 
 
 class MainActivity : Activity() {
-    private lateinit var layoutBinding : ActivityMainBinding
+    private lateinit var mainBinding : ActivityMainBinding
     private lateinit var filterBinding: CardFilterBinding
-    private lateinit var bpData : BPEntity
+    private lateinit var bpReading : BloodPressureReading
     private var searchCriteria = Criteria(null,null)
     private lateinit var bpViewModel: BpViewModel
 
@@ -42,13 +42,13 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
-        layoutBinding = ActivityMainBinding.inflate(LayoutInflater.from(this@MainActivity))
-        setContentView(layoutBinding.root)
+        mainBinding = ActivityMainBinding.inflate(LayoutInflater.from(this@MainActivity))
+        setContentView(mainBinding.root)
 
-        bpViewModel = provideFactory((this.application as BPApplication).repo).create(BpViewModel::class.java)
+        bpViewModel = provideFactory((this.application as BPApplication).getRepo()).create(BpViewModel::class.java)
 
-        val datePickerButton = layoutBinding.datePickerButton
-        val timePickerButton = layoutBinding.timePickerButton
+        val datePickerButton = mainBinding.datePickerButton
+        val timePickerButton = mainBinding.timePickerButton
 
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -58,9 +58,6 @@ class MainActivity : Activity() {
 
         bpViewModel.setDateOfCurrent(LocalDateTime.now())
         bpViewModel.setTimeOfCurrent(LocalTime.now())
-
-//        datePickerButton.text = getString(R.string.date_visual_formatter, year, month + 1, day)
-//        timePickerButton.text = selectedDate.format(DateTimeFormatter.ofPattern("HH:mm"))
 
         datePickerButton.setOnClickListener {
             val pickerDialog = DatePickerDialog(
@@ -90,7 +87,6 @@ class MainActivity : Activity() {
                     run {
                         timePickerButton.text =
                             getString(R.string.time_visual_formatter, pHour, pMinute)
-//                        selectedTime = LocalTime.of(pHour, pMinute)
                         bpViewModel.setTimeOfCurrent(LocalTime.of(pHour, pMinute))
                         Log.d("date", "time: ${bpViewModel.getCurrent()!!.time.toString()} was selected...")
                     }
@@ -102,14 +98,14 @@ class MainActivity : Activity() {
             mTimePicker.show()
         }
 
-        layoutBinding.saveButton.setOnClickListener {
+        mainBinding.saveButton.setOnClickListener {
             if (formDataIsValid()) {
-                bpData = BPEntity(
-                    Integer.parseInt(layoutBinding.sistholicEdit.text.toString()),
-                    Integer.parseInt(layoutBinding.diastholicEdit.text.toString()),
+                bpReading = BloodPressureReading(
+                    Integer.parseInt(mainBinding.sistholicEdit.text.toString()),
+                    Integer.parseInt(mainBinding.diastholicEdit.text.toString()),
                     bpViewModel.getCurrent()!!.date, bpViewModel.getCurrent()!!.time
                 )
-                bpViewModel.save(bpData)
+                bpViewModel.save(bpReading)
                 Toast.makeText(
                     this@MainActivity,
                     getString(R.string.blood_pressure_values_saved_successfully), Toast.LENGTH_SHORT
@@ -126,11 +122,11 @@ class MainActivity : Activity() {
             }
         }
 
-        layoutBinding.exitButton.setOnClickListener {
+        mainBinding.exitButton.setOnClickListener {
             finish()
         }
 
-        layoutBinding.searchButton.setOnClickListener {
+        mainBinding.searchButton.setOnClickListener {
 
             filterBinding = CardFilterBinding.inflate(LayoutInflater.from(this@MainActivity))
 
@@ -138,7 +134,7 @@ class MainActivity : Activity() {
             val popupHeight = LayoutParams.WRAP_CONTENT
             val filterPopup = PopupWindow(filterBinding.root.rootView, popupWidth, popupHeight).also {
                 it.setBackgroundDrawable(ResourcesCompat.getDrawable(resources,R.drawable.popup_borders,this@MainActivity.theme))
-                it.showAtLocation(layoutBinding.root, 1, 0, filterBinding.root.height / 2)
+                it.showAtLocation(mainBinding.root, 1, 0, filterBinding.root.height / 2)
                 it.dimBehind(filterBinding.root)
             }
 
@@ -156,7 +152,6 @@ class MainActivity : Activity() {
                 { _, pYear, pMonth, pDay ->
                     run {
                         searchDateFromButton.text = DateUtils.toDisplayableDate(pYear, pMonth + 1, pDay)
-//                        searchCriteria.dateFrom = LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0)
                         bpViewModel.currentCriteria.dateFrom=LocalDateTime.of(pYear, pMonth + 1, pDay, 0, 0)
                     }
                 }, year, month, day)
@@ -190,7 +185,7 @@ class MainActivity : Activity() {
 
             searchCancelButton.setOnClickListener { filterPopup.dismiss() }
 
-            filterPopup.showAtLocation(layoutBinding.root, 1, 0, filterBinding.root.height / 2)
+            filterPopup.showAtLocation(mainBinding.root, 1, 0, filterBinding.root.height / 2)
             filterPopup.dimBehind(filterBinding.root)
         }
 
@@ -202,27 +197,27 @@ class MainActivity : Activity() {
             searchCriteria = bpViewModel.currentCriteria
         }
         bpViewModel.getCurrent()?.let {
-            layoutBinding.datePickerButton.text =
+            mainBinding.datePickerButton.text =
                 DateUtils.toDisplayableDate(bpViewModel.getCurrent()!!.date.year, bpViewModel.getCurrent()!!.date.month.value, bpViewModel.getCurrent()!!.date.dayOfMonth)
-            layoutBinding.timePickerButton.text =
+            mainBinding.timePickerButton.text =
                 DateUtils.toDisplayableTime(bpViewModel.getCurrent()!!.time.hour,bpViewModel.getCurrent()!!.time.minute)
-            layoutBinding.sistholicEdit.setText(bpViewModel.getCurrent()!!.sistholic.toString())
-            layoutBinding.diastholicEdit.setText(bpViewModel.getCurrent()!!.diastholic.toString())
+            mainBinding.sistholicEdit.setText(bpViewModel.getCurrent()!!.sistholic.toString())
+            mainBinding.diastholicEdit.setText(bpViewModel.getCurrent()!!.diastholic.toString())
         }
 
     }
     private fun formDataIsValid(): Boolean {
-        return !(layoutBinding.sistholicEdit.text.isBlank()
-                ||layoutBinding.diastholicEdit.text.isBlank()
-                ||layoutBinding.datePickerButton.text.isBlank()
-                ||layoutBinding.timePickerButton.text.isBlank())
+        return !(mainBinding.sistholicEdit.text.isBlank()
+                ||mainBinding.diastholicEdit.text.isBlank()
+                ||mainBinding.datePickerButton.text.isBlank()
+                ||mainBinding.timePickerButton.text.isBlank())
     }
     private fun resetInputBpData(){
         val calendar = Calendar.getInstance()
-        layoutBinding.sistholicEdit.text.clear()
-        layoutBinding.diastholicEdit.text.clear()
-        layoutBinding.datePickerButton.text= getString(R.string.date_visual_formatter, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+ 1, calendar.get(Calendar.DAY_OF_MONTH)) //getText(R.string.date_picker_button_caption)
-        layoutBinding.timePickerButton.text=getString(R.string.time_visual_formatter,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE))
+        mainBinding.sistholicEdit.text.clear()
+        mainBinding.diastholicEdit.text.clear()
+        mainBinding.datePickerButton.text= getString(R.string.date_visual_formatter, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+ 1, calendar.get(Calendar.DAY_OF_MONTH)) //getText(R.string.date_picker_button_caption)
+        mainBinding.timePickerButton.text=getString(R.string.time_visual_formatter,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE))
     }
     private fun PopupWindow.dimBehind(contentView:View) {
 

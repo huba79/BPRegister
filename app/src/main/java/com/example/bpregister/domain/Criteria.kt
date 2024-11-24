@@ -23,6 +23,7 @@ data class Criteria(var dateFrom: LocalDateTime?, var dateTo:LocalDateTime?):Ser
         }
         return this
     }
+
     fun clear():Criteria {
         dateFrom=null
         dateTo=null

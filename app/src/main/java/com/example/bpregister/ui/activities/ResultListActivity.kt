@@ -1,61 +1,85 @@
 package com.example.bpregister.ui.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bpregister.databinding.ActivityResultListBinding
-import com.example.bpregister.domain.BPEntity
+import com.example.bpregister.domain.BloodPressureReading
 import com.example.bpregister.domain.Criteria
 import com.example.bpregister.room.BPApplication
 import com.example.bpregister.ui.viewmodel.ResultListViewModel
 import com.example.bpregister.utils.MailHelper
+import java.time.LocalDateTime
+import java.time.LocalTime
 
-class ResultListActivity : AppCompatActivity() {
-
+class ResultListActivity() : AppCompatActivity() {
     private lateinit var binding: ActivityResultListBinding
     private lateinit var resultsViewModel: ResultListViewModel
+
     private lateinit var recipients:String
-    private  lateinit var subject: String
+    private lateinit var subject: String
     private lateinit var message: String
 
     private val adapter = ResultsAdapter(this@ResultListActivity)
-    private var criteria:Criteria = Criteria(null, null)
 
+    private lateinit var searchCriteria :Criteria // = Criteria(null, null)
+
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityResultListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        resultsViewModel = ResultListViewModel.provideFactory((this.application as BPApplication).repo).create(ResultListViewModel::class.java)
+        val applicationContext = this.applicationContext as BPApplication
+        resultsViewModel= ResultListViewModel
+            .provideFactory(applicationContext.getRepo())
+            .create(ResultListViewModel::class.java)
 
-        resultsViewModel.results.observe(this@ResultListActivity) {
-            Log.d("On Results changed","Actual criteria: ${criteria}")
-            Log.d("On Results changed","Updated results: ${logList(it)}")
-            adapter.setResults(it)
-        }
-        if (intent.getSerializableExtra("criteria") is Criteria) {
-            criteria = intent.getSerializableExtra("criteria") as Criteria
-            Log.d("criteria",criteria.toString())
-            resultsViewModel.currentCriteria = criteria
-            Log.i("Fetching results with","Criteria from: ${criteria.dateFrom}, to: ${criteria.dateTo}")
-            resultsViewModel.getFiltered()
-        }
-        else {
-            Toast.makeText(this@ResultListActivity,"Incorrect parameter!",Toast.LENGTH_SHORT).show()
-            resultsViewModel.getAll()
+//        resultsViewModel.init()
+
+        val lifeCycleOwner = binding.resultsRecyclerView.findViewTreeLifecycleOwner()
+
+        resultsViewModel.results.observe(lifeCycleOwner!!) { list ->
+            Log.d("ResultListActivity", "Observer triggered")
+            if (list != null && list.isNotEmpty()) {
+                Log.d("ResultListActivity", "List is not empty: ${logList(list)}")
+                adapter.setContents(list)
+            } else {
+                Log.d("ResultListActivity", "List is not empty: ${logList(list)}")
+                Toast.makeText(this@ResultListActivity, "No results found!", Toast.LENGTH_SHORT).show()
+                //TODO list seems to be empty!!!!!!!!!!
+            }
+
         }
 
         binding.resultsRecyclerView.layoutManager=LinearLayoutManager(this@ResultListActivity)
+        adapter.setContents(resultsViewModel.results.value?: listOf(BloodPressureReading(0,0,
+            LocalDateTime.now(), LocalTime.now())))
         binding.resultsRecyclerView.adapter=adapter
+
+
+
+        if (intent.getSerializableExtra("criteria") is Criteria) {
+            searchCriteria = intent.getSerializableExtra("criteria") as Criteria
+            Log.d("ResultListActivity: ","Received criteria: $searchCriteria")
+            Log.i("ResultListActivity","Fetching results from: ${searchCriteria.dateFrom}, to: ${searchCriteria.dateTo}")
+            resultsViewModel.queryFiltered(searchCriteria)
+        }
+        else {
+            Toast.makeText(this@ResultListActivity,"Incorrect date filter parameter!",Toast.LENGTH_SHORT).show()
+            resultsViewModel.queryAll()
+        }
 
         binding.sendResultsInMailButton.setOnClickListener {
             recipients= MailHelper.getRecipient().trim()
-            subject = MailHelper.getSubject(this@ResultListActivity, criteria.dateFrom, criteria.dateTo).trim()
-            message = MailHelper.getBody(this@ResultListActivity, criteria.dateFrom, criteria.dateTo).trim()
+            subject = MailHelper.getSubject(this@ResultListActivity, searchCriteria.dateFrom, searchCriteria.dateTo).trim()
+            message = MailHelper.getBody(this@ResultListActivity, searchCriteria.dateFrom, searchCriteria.dateTo).trim()
             sendEmail(recipients,subject,message)
         }
 //        setSupportActionBar(findViewById(R.id.toolbar))
@@ -84,14 +108,8 @@ class ResultListActivity : AppCompatActivity() {
         }
 
     }
-    fun logList(list:List<BPEntity>?):String{
-        var out = ""
-        if (list!=null) {
-            for(item: BPEntity in list){
-                out += item.toString()
-            }
-            return out
-        }
-        return out
+
+    fun logList(list: List<BloodPressureReading>?): String {
+        return list?.joinToString { it.toString() } ?: ""
     }
 }

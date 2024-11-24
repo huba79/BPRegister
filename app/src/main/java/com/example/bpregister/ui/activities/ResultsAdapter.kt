@@ -11,26 +11,26 @@ import androidx.viewbinding.ViewBinding
 import com.example.bpregister.R
 import com.example.bpregister.databinding.CardItemBinding
 import com.example.bpregister.databinding.CardHeaderBinding
-import com.example.bpregister.domain.BPEntity
+import com.example.bpregister.domain.BloodPressureReading
 import com.example.bpregister.utils.DateUtils
 
 class ResultsAdapter(private val context: Context) : Adapter<ResultsAdapter.ViewHolder>() {
-    private var results:List<BPEntity> = ArrayList()
+    private var results:List<BloodPressureReading> = ArrayList()
     private val TYPE_HEADER = 0
     private val TYPE_ITEM = 1
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setResults(results: List<BPEntity>) {
-        this.results = results
+    fun setContents(pResults: List<BloodPressureReading>) {
+        results = pResults
+        Log.d("ResultListActivity", "Updated results(adapter level): $results")
         notifyDataSetChanged()
     }
     override fun getItemViewType(position: Int): Int {
-        if (isPositionHeader(position)) {
-            return TYPE_HEADER
-        } else return TYPE_ITEM
+        return if (isPositionHeader(position)) {
+            TYPE_HEADER
+        } else TYPE_ITEM
     }
-    open class ViewHolder(var binding:ViewBinding): RecyclerView.ViewHolder(binding.root) {
-    }
+    open class ViewHolder(var binding:ViewBinding): RecyclerView.ViewHolder(binding.root)
 
     private fun isPositionHeader(position:Int):Boolean{
         return position==0
@@ -38,10 +38,10 @@ class ResultsAdapter(private val context: Context) : Adapter<ResultsAdapter.View
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Log.i("ResultsAdapter","onCreate")
         Log.d("ResultsAdapter","results:${results} ")
-        if (viewType==TYPE_ITEM){
-            return ViewHolder(CardItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return if (viewType==TYPE_ITEM){
+            ViewHolder(CardItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
         } else {
-            return ViewHolder(CardHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            ViewHolder(CardHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false))
         }
     }
     override fun getItemCount(): Int {
@@ -67,14 +67,16 @@ class ResultsAdapter(private val context: Context) : Adapter<ResultsAdapter.View
             itemCardBinding.timeListItemView.text=DateUtils.toDisplayableTime(item.time.hour, item.time.minute)
         }
     }
-    fun logList(list:List<BPEntity>?):String{
-        var out: String = ""
+    fun logList(list:List<BloodPressureReading>?):String{
+        var out = "Empty list"
         if (list!=null) {
-            for(item:BPEntity in list){
+            for(item:BloodPressureReading in list){
                 out += item.toString()
             }
+            Log.d("ResultListViewModel","Result list is: $out")
             return out
-        }
+
+        } else Log.d("ResultListViewModel","Result list is empty!")
         return out
     }
 }
