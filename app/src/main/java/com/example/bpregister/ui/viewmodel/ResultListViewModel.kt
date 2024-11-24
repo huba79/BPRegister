@@ -5,28 +5,39 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.bpregister.domain.BPEntity
+import com.example.bpregister.domain.BloodPressureReading
 import com.example.bpregister.domain.Criteria
-import com.example.bpregister.room.BpRepository
+import com.example.bpregister.room.BloodPressureReadingRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ResultListViewModel(private val repo:BpRepository): ViewModel() {
-    var results: LiveData<List<BPEntity>> = MutableLiveData()
-    var currentCriteria: Criteria = Criteria(null, null)
+class ResultListViewModel(private val repo:BloodPressureReadingRepository): ViewModel() {
 
-    fun getFiltered() = viewModelScope.launch(Dispatchers.IO){
-        results =  repo.getFiltered(currentCriteria.dateFrom, currentCriteria.dateTo).asLiveData()
-        Log.d("ResultListViewModel","filtered results: ${logList(results.value)}")
+    private val _results: MutableLiveData<List<BloodPressureReading>> = MutableLiveData<List<BloodPressureReading>>()
+    val results: LiveData<List<BloodPressureReading>> = _results
+
+    fun queryFiltered(criteria : Criteria) {
+        viewModelScope.launch {
+            repo.getFiltered(criteria.dateFrom, criteria.dateTo).collect { results ->
+                _results.value = results
+            }
+        }
     }
-    fun getAll() = viewModelScope.launch(Dispatchers.IO){
-        results =  repo.getAll().asLiveData()
-        Log.d("ResultListViewModel","all results: ${logList(results.value)}")
+
+
+    fun queryAll() = viewModelScope.launch(Dispatchers.IO){
+        Log.d("ResultListViewModel","All results requested from viewmodel")
+        viewModelScope.launch {
+            repo.getAll().collect { results ->
+                _results.value = results
+            }
+        }
     }
+
+
     companion object Factory {
-        fun provideFactory( myRepository: BpRepository ): ViewModelProvider.AndroidViewModelFactory =
+        fun provideFactory( myRepository: BloodPressureReadingRepository ): ViewModelProvider.AndroidViewModelFactory =
             object : ViewModelProvider.AndroidViewModelFactory() {
                 @Suppress("UNCHECKED_CAST")
                 override fun <T : ViewModel> create(
@@ -36,14 +47,8 @@ class ResultListViewModel(private val repo:BpRepository): ViewModel() {
                 }
             }
     }
-    fun logList(list:List<BPEntity>?):String{
-        var out = ""
-        if (list!=null) {
-            for(item:BPEntity in list){
-                out += item.toString()
-            }
-            return out
-        }
-        return out
+
+    fun logList(list: List<BloodPressureReading>?): String {
+        return list?.joinToString { it.toString() } ?: ""
     }
 }

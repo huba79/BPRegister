@@ -1,28 +1,32 @@
 package com.example.bpregister.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.bpregister.domain.BPEntity
+import com.example.bpregister.domain.BloodPressureReading
 import com.example.bpregister.domain.Criteria
-import com.example.bpregister.room.BpRepository
+import com.example.bpregister.room.BloodPressureReadingRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.time.LocalDateTime
+import java.time.LocalDate
 import java.time.LocalTime
 
-class BpViewModel(private val repo:BpRepository): ViewModel() {
-    private var currentRecord: MutableLiveData<BPEntity?> = MutableLiveData<BPEntity?>(BPEntity(0,0,LocalDateTime.now(), LocalTime.of(10,0)))
+class BpViewModel(private val repo:BloodPressureReadingRepository): ViewModel() {
+
+    private var currentRecord: MutableLiveData<BloodPressureReading?> = MutableLiveData<BloodPressureReading?>(BloodPressureReading(0,0,LocalDate.now(), LocalTime.of(10,0)))
     var currentCriteria: Criteria = Criteria(null, null)
-    fun save(entity:BPEntity) {
+
+    fun save(entity:BloodPressureReading) {
         viewModelScope.launch(Dispatchers.IO){
             repo.insert(entity)
+            Log.d("BpViewModel","Data saved to repository")
         }
         currentRecord.value = entity
     }
 
-    fun setDateOfCurrent(date:LocalDateTime){
+    fun setDateOfCurrent(date:LocalDate){
         currentRecord.value.let { currentRecord.value!!.date= date }
     }
     fun setTimeOfCurrent(time: LocalTime){
@@ -34,14 +38,14 @@ class BpViewModel(private val repo:BpRepository): ViewModel() {
     fun setDiastholicOfOfCurrent(dia:Int){
         currentRecord.value.let { currentRecord.value!!.diastholic= dia }
     }
-    fun getCurrent():BPEntity?{
+    fun getCurrent():BloodPressureReading?{
          currentRecord.let{
              return currentRecord.value
         }
     }
     companion object Factory {
         fun provideFactory(
-            myRepository: BpRepository
+            myRepository: BloodPressureReadingRepository
         ): ViewModelProvider.AndroidViewModelFactory =
             object : ViewModelProvider.AndroidViewModelFactory() {
                 @Suppress("UNCHECKED_CAST")

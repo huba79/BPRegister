@@ -18,6 +18,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
     }
     dataBinding {
         enable = true
@@ -47,6 +50,7 @@ android {
 
 dependencies {
     val kspversion = "2.6.1"
+    val lifecycleversion = "2.8.7"
     //--room Database dependencies
     annotationProcessor( "androidx.room:room-compiler:$kspversion")
     implementation("androidx.room:room-runtime:$kspversion")
@@ -55,17 +59,17 @@ dependencies {
     //KSP
     ksp("androidx.room:room-compiler:$kspversion")
     //--room end
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleversion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleversion")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
+//    implementation("androidx.appcompat:appcompat:1.7.0")
 
-    implementation("androidx.activity:activity-ktx:1.8.1")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
+    implementation("androidx.activity:activity-ktx:1.9.3")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.3")
 
-    implementation("com.google.android.material:material:1.10.0")
+    implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.0")
 //    implementation("com.google.android.gms:play-services-maps:18.2.0")
 
     //Test
