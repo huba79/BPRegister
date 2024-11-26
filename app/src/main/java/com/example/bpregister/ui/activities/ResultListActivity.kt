@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bpregister.databinding.ActivityResultListBinding
 import com.example.bpregister.domain.BloodPressureReading
@@ -43,9 +42,9 @@ class ResultListActivity() : AppCompatActivity() {
 
 //        resultsViewModel.init()
 
-        val lifeCycleOwner = binding.resultsRecyclerView.findViewTreeLifecycleOwner()
+        val lifeCycleOwner = this
 
-        resultsViewModel.results.observe(lifeCycleOwner!!) { list ->
+        resultsViewModel.results.observe(lifeCycleOwner) { list ->
             Log.d("ResultListActivity", "Observer triggered")
             if (list != null && list.isNotEmpty()) {
                 Log.d("ResultListActivity", "List is not empty: ${logList(list)}")
@@ -112,4 +111,5 @@ class ResultListActivity() : AppCompatActivity() {
     fun logList(list: List<BloodPressureReading>?): String {
         return list?.joinToString { it.toString() } ?: ""
     }
+
 }

@@ -19,17 +19,16 @@ class ResultListViewModel(private val repo:BloodPressureReadingRepository): View
 
     fun queryFiltered(criteria : Criteria) {
         viewModelScope.launch {
-            repo.getFiltered(criteria.dateFrom, criteria.dateTo).collect { results ->
+            repo.getByCriteria(criteria.dateFrom, criteria.dateTo).collect { results ->
                 _results.value = results
             }
         }
     }
 
-
     fun queryAll() = viewModelScope.launch(Dispatchers.IO){
         Log.d("ResultListViewModel","All results requested from viewmodel")
         viewModelScope.launch {
-            repo.getAll().collect { results ->
+            repo.getUnfiltered().collect { results ->
                 _results.value = results
             }
         }
@@ -48,7 +47,4 @@ class ResultListViewModel(private val repo:BloodPressureReadingRepository): View
             }
     }
 
-    fun logList(list: List<BloodPressureReading>?): String {
-        return list?.joinToString { it.toString() } ?: ""
-    }
 }

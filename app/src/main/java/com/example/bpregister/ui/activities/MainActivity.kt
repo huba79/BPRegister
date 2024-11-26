@@ -1,10 +1,8 @@
-package com.example.bpregister
+package com.example.bpregister.ui.activities
 
 import android.app.ActionBar.LayoutParams
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Context
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -14,14 +12,15 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.PopupWindow
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.WindowCompat
+import com.example.bpregister.R
 import com.example.bpregister.databinding.ActivityMainBinding
 import com.example.bpregister.databinding.CardFilterBinding
 import com.example.bpregister.domain.BloodPressureReading
 import com.example.bpregister.domain.Criteria
 import com.example.bpregister.room.BPApplication
-import com.example.bpregister.ui.activities.ResultListActivity
 import com.example.bpregister.ui.viewmodel.BpViewModel
 import com.example.bpregister.ui.viewmodel.BpViewModel.Factory.provideFactory
 import com.example.bpregister.utils.DateUtils
@@ -32,7 +31,7 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding : ActivityMainBinding
     private lateinit var filterBinding: CardFilterBinding
     private lateinit var bpReading : BloodPressureReading
@@ -134,7 +133,8 @@ class MainActivity : Activity() {
             val popupWidth = LayoutParams.MATCH_PARENT
             val popupHeight = LayoutParams.WRAP_CONTENT
             val filterPopup = PopupWindow(filterBinding.root.rootView, popupWidth, popupHeight).also {
-                it.setBackgroundDrawable(ResourcesCompat.getDrawable(resources,R.drawable.popup_borders,this@MainActivity.theme))
+                it.setBackgroundDrawable(ResourcesCompat.getDrawable(resources,
+                    R.drawable.popup_borders,this@MainActivity.theme))
                 it.showAtLocation(mainBinding.root, 1, 0, filterBinding.root.height / 2)
                 it.dimBehind(filterBinding.root)
             }
@@ -223,7 +223,7 @@ class MainActivity : Activity() {
     private fun PopupWindow.dimBehind(contentView:View) {
 
         val context = contentView.rootView.context
-        val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val wm = context.getSystemService(WINDOW_SERVICE) as WindowManager
         val popupLayoutParams = contentView.rootView.layoutParams as WindowManager.LayoutParams
 
         popupLayoutParams.flags = popupLayoutParams.flags or WindowManager.LayoutParams.FLAG_DIM_BEHIND

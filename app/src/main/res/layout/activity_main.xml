@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     android:theme="@style/Base.Theme.BPRegister"
-    tools:context=".MainActivity">
+    tools:context=".ui.activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="@dimen/input_card_margin_horiz"
-                    android:layout_marginVertical="@dimen/input_card_margin_vert"
+                    android:layout_marginVertical="@dimen/list_item_card_margin_vert"
                     android:ems="10"
                     android:gravity="center"
                     android:text="@string/registration_card_title"
@@ -54,8 +54,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
+                    android:layout_marginVertical="@dimen/list_item_card_margin_vert"
                     android:orientation="horizontal"
-                    android:padding="8dp">
+                    android:padding="@dimen/text_item_padding_horiz">
 
                     <TextView
                         android:id="@+id/sistholicLabel"
@@ -66,6 +67,7 @@
                         android:layout_weight="1"
                         android:gravity="start|center_vertical"
                         android:labelFor="@id/sistholicEdit"
+                        android:padding="@dimen/text_inner_padding"
                         android:text="@string/label_sistholic"
                         android:textSize="@dimen/font_size_normal"
                         android:textStyle="bold"
@@ -80,6 +82,7 @@
                         android:layout_weight="1"
                         android:gravity="end|center_vertical"
                         android:labelFor="@id/diastholicEdit"
+                        android:padding="@dimen/text_inner_padding"
                         android:text="@string/label_diastholic"
                         android:textSize="@dimen/font_size_normal"
                         android:textStyle="bold"
@@ -92,6 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
+                    android:layout_marginVertical="@dimen/list_item_card_margin_vert"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="@dimen/text_item_padding_horiz">
@@ -99,7 +103,9 @@
                     <EditText
                         android:id="@+id/sistholicEdit"
                         style="@style/edit_text_on_card_style"
-                        android:autofillHints="@string/label_sistholic" />
+                        android:autofillHints="@string/label_sistholic"
+                        android:hyphenationFrequency="normalFast"
+                        android:padding="@dimen/text_inner_padding" />
 
                     <TextView
                         android:id="@+id/slashListItemView"
@@ -109,7 +115,10 @@
                     <EditText
                         android:id="@+id/diastholicEdit"
                         style="@style/edit_text_on_card_style"
-                        android:autofillHints="@string/label_diastholic" />
+                        android:autofillHints="@string/label_diastholic"
+                        android:hyphenationFrequency="normal"
+                        android:padding="@dimen/text_inner_padding"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -118,6 +127,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="@dimen/inner_item_margin_horiz_short"
+                    android:layout_marginVertical="@dimen/list_item_card_margin_vert"
                     android:gravity="center"
                     android:orientation="horizontal"
                     android:padding="@dimen/text_item_padding_horiz">
@@ -130,9 +140,7 @@
                         android:layout_marginHorizontal="@dimen/text_item_margin_horiz"
                         android:layout_marginVertical="@dimen/text_item_margin_vert"
                         android:layout_weight="3"
-                        android:paddingHorizontal="@dimen/text_item_padding_horiz"
-                        android:paddingVertical="@dimen/text_item_padding_vert"
-                        android:textSize="@dimen/font_size_normal" />
+                        android:paddingVertical="@dimen/text_item_padding_vert" />
 
                     <TextView
                         android:id="@+id/textView"
@@ -148,8 +156,7 @@
                         android:layout_marginVertical="@dimen/text_item_margin_vert"
                         android:layout_weight="3"
                         android:paddingHorizontal="@dimen/text_item_padding_horiz"
-                        android:paddingVertical="@dimen/text_item_padding_vert"
-                        android:textSize="@dimen/font_size_normal" />
+                        android:paddingVertical="@dimen/text_item_padding_vert" />
 
                 </LinearLayout>
 

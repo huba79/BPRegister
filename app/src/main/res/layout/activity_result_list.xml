@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/resultPageLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
     android:theme="@style/Base.Theme.BPRegister"
     tools:context=".ui.activities.ResultListActivity">
@@ -21,7 +21,8 @@
         android:id="@+id/footerButtonsView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="#9AE2DDDD">
 
         <Button
             android:id="@+id/sendResultsInMailButton"

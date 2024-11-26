@@ -14,15 +14,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BPRegister"
+        android:theme="@style/Base.Theme.BPRegister"
         tools:targetApi="31">
         <activity
             android:name=".ui.activities.ResultListActivity"
             android:exported="false"
             android:label="@string/title_activity_bp_list"
-            android:theme="@style/Theme.BPRegister.NoActionBar" />
+            android:theme="@style/Base.Theme.BPRegister" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

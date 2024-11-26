@@ -1,6 +1,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <corners
         android:radius="@dimen/item_corner_radius" />
-<!--    <solid android:color="@color/bp" />-->
+    <solid android:color="@color/material_dynamic_neutral30" />
 
 </shape>

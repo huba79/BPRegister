@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="button_style_default">
+    <style name="button_style_default" parent="android:Widget.ActionButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
           <item name="android:layout_gravity">center|center_horizontal</item>
@@ -19,6 +19,7 @@
     <style name="button_style_search" parent="button_style_default">
         <item name="android:layout_marginHorizontal">24dp</item>
         <item name="android:layout_marginVertical">24dp</item>
+        <item name="android:background">@drawable/button_borders</item>
     </style>
 
     <style name="button_style_mail" parent="button_style_default">
@@ -127,7 +128,7 @@
 
     <style name="edit_text_on_card_style" parent="android:Widget.EditText">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">48dp</item>
         <item name="android:layout_marginHorizontal">@dimen/text_item_margin_horiz</item>
         <item name="android:layout_marginVertical">@dimen/text_item_margin_vert</item>
         <item name="android:layout_weight">3</item>
