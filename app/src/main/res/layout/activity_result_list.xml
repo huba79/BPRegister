@@ -12,6 +12,8 @@
         android:id="@+id/resultsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/footerButtonsView"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
         android:scrollbarStyle="insideOverlay">
 
@@ -28,7 +30,8 @@
             android:id="@+id/sendResultsInMailButton"
             style="@style/button_style_mail"
             android:layout_alignParentEnd="true"
-            android:background="@android:drawable/ic_dialog_email" />
+            android:background="@android:drawable/ic_dialog_email"
+            android:contentDescription="@string/email_button_description" />
     </RelativeLayout>
 
 </RelativeLayout>

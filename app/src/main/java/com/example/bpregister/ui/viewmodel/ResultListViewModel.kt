@@ -9,8 +9,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.bpregister.domain.BloodPressureReading
 import com.example.bpregister.domain.Criteria
 import com.example.bpregister.room.BloodPressureReadingRepository
+import com.example.bpregister.utils.FileHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.FileWriter
 
 class ResultListViewModel(private val repo:BloodPressureReadingRepository): ViewModel() {
 
@@ -32,6 +35,10 @@ class ResultListViewModel(private val repo:BloodPressureReadingRepository): View
                 _results.value = results
             }
         }
+    }
+
+    fun getResultListAsFile():File? {
+        return  FileHelper.createAttachment(results.value)
     }
 
 

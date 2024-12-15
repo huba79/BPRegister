@@ -72,4 +72,5 @@
     <string name="label_date_from">Dátumtól</string>
     <string name="label_date_to">Dátumig</string>
     <string name="button_cancel">Mégsem</string>
+    <string name="email_button_description">Eredmények küldése e-mailben</string>
 </resources>

@@ -10,7 +10,7 @@ class BloodPressureReadingRepository(private val dao: BloodPressureReadingDao) {
 
     @WorkerThread
     fun getByCriteria(dateFrom:LocalDate?, dateTo:LocalDate?): Flow<List<BloodPressureReading>> {
-        Log.d("BloodPressureReadingRepository","Accessing repo with \"criteria\" params: date from: $dateFrom, date to: $dateTo " )
+        Log.d("BPReadingRepository","Accessing repo with \"criteria\" params: date from: $dateFrom, date to: $dateTo " )
         //TODO solve repo filtering by passing Criteria to DAO level (null param handling!)
         if (dateFrom == null && dateTo == null) {
             return dao.getAllBloodPressureReadings()
@@ -24,7 +24,7 @@ class BloodPressureReadingRepository(private val dao: BloodPressureReadingDao) {
 
     @WorkerThread
     fun getUnfiltered(): Flow<List<BloodPressureReading>>{
-        Log.d("BloodPressureReadingRepository","Accessing repo get with \"all\" params " )
+        Log.d("BPReadingRepository","Accessing repo get with \"all\" params " )
         return dao.getAllBloodPressureReadings()
     }
 
@@ -35,7 +35,7 @@ class BloodPressureReadingRepository(private val dao: BloodPressureReadingDao) {
 //    }
     @WorkerThread
     suspend fun insert(item:BloodPressureReading){
-        Log.d("BloodPressureReadingRepository","Inserting into repo with \"item\" param: $item " )
+        Log.d("BPReadingRepository","Inserting into repo with \"item\" param: $item " )
         dao.insertBloodPressureReading(item)
     }
 //    @WorkerThread

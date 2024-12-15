@@ -79,4 +79,5 @@
     </string>
     <string name="label_bp">Sistholic/Diastholic</string>
     <string name="button_cancel">Cancel</string>
+    <string name="email_button_description">Send results as e-mail</string>
 </resources>

@@ -97,6 +97,7 @@ class ResultListActivity() : AppCompatActivity() {
         mailSenderIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(recipient))
         mailSenderIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
         mailSenderIntent.putExtra(Intent.EXTRA_TEXT, message)
+        mailSenderIntent.putExtra(/* name = */ Intent.EXTRA_STREAM, /* value = */ resultsViewModel.getResultListAsFile())
 
         try {
             startActivity(Intent.createChooser(mailSenderIntent, "Choose Email Client..."))
