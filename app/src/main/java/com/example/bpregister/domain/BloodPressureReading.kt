@@ -18,6 +18,8 @@ data class BloodPressureReading (var sistholic:Int,
     override fun toString():String{
         return "$sistholic/$diastholic/${date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))}/${time.format(DateTimeFormatter.ofPattern("HH:mm"))}"
     }
-
+    fun toFormattedString():String{
+        return "$sistholic,$diastholic,${date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))},${time.format(DateTimeFormatter.ofPattern("HH:mm"))}"
+    }
 
 }

@@ -73,4 +73,5 @@
     <string name="label_date_to">Dátumig</string>
     <string name="button_cancel">Mégsem</string>
     <string name="email_button_description">Eredmények küldése e-mailben</string>
+    <string name="no_mailer_app_found">Nem találtam e-mail küldő appot! Kérlek telepíts egyet!</string>
 </resources>

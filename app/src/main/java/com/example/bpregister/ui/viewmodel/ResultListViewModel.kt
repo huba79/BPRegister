@@ -13,7 +13,6 @@ import com.example.bpregister.utils.FileHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
-import java.io.FileWriter
 
 class ResultListViewModel(private val repo:BloodPressureReadingRepository): ViewModel() {
 
@@ -38,7 +37,7 @@ class ResultListViewModel(private val repo:BloodPressureReadingRepository): View
     }
 
     fun getResultListAsFile():File? {
-        return  FileHelper.createAttachment(results.value)
+        return  FileHelper.createFileFromList(results.value)
     }
 
 

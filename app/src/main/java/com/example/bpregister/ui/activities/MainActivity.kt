@@ -1,5 +1,6 @@
 package com.example.bpregister.ui.activities
 
+import android.annotation.SuppressLint
 import android.app.ActionBar.LayoutParams
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var filterBinding: CardFilterBinding
     private lateinit var bpReading : BloodPressureReading
     private var searchCriteria = Criteria(null,null)
-    private lateinit var bpViewModel: BpViewModel
+    lateinit var bpViewModel: BpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -192,7 +193,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
+    @SuppressLint("SetTextI18n")
+    public override fun onResume() {
         super.onResume()
         bpViewModel.currentCriteria.let {
             searchCriteria = bpViewModel.currentCriteria

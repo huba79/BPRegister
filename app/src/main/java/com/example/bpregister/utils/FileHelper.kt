@@ -1,5 +1,6 @@
 package com.example.bpregister.utils
 
+import android.util.Log
 import com.example.bpregister.domain.BloodPressureReading
 import java.io.File
 import java.io.FileNotFoundException
@@ -9,21 +10,30 @@ import java.io.IOException
 object FileHelper {
     private val file: File = File.createTempFile("myBloodPressureReadings.csv", ".csv")
     private val fileWriter: FileWriter = FileWriter(file)
-    fun createAttachment(data: List<BloodPressureReading>?): File? {
+    fun createFileFromList(data: List<BloodPressureReading>?): File? {
         try {
-
-
             if(file.exists()){
+                Log.d("FileHelper","File exists")
                 if(data == null) {
+                    Log.d("FileHelper","Input List is null")
                     fileWriter.use {
                         it.write("")
                     }
                 } else {
-                    fileWriter.use {
-                        it.write("")
-                    }
-                    for(reading: BloodPressureReading in data!!) {
-                        FileWriter(file).append("/n$reading")
+                    Log.d("FileHelper","Input List not null")
+//                    fileWriter.use {
+//                        it.write("")
+//                        Log.d("FileHelper","File cleared")
+//                    }
+                    var counter = 0
+                    Log.d("FileHelper","List size: ${data.size}")
+
+                    for(reading: BloodPressureReading in data) {
+                        if (counter++==0 ) {
+                            fileWriter.append(reading.toFormattedString())
+                        } else{
+                            fileWriter.append(",\n${reading.toFormattedString()}")
+                        }
                     }
                 }
                 fileWriter.close()
@@ -41,7 +51,6 @@ object FileHelper {
             fileWriter.close()
             return null
         }
-        return null
     }
 
 }
