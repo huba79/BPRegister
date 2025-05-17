@@ -9,11 +9,12 @@ import java.io.IOException
 
 object FileHelper {
     private val file: File = File.createTempFile("myBloodPressureReadings.csv", ".csv")
-    private val fileWriter: FileWriter = FileWriter(file)
+    private lateinit var fileWriter: FileWriter
     fun createFileFromList(data: List<BloodPressureReading>?): File? {
         try {
             if(file.exists()){
                 Log.d("FileHelper","File exists")
+                fileWriter= FileWriter(file)
                 if(data == null) {
                     Log.d("FileHelper","Input List is null")
                     fileWriter.use {
@@ -21,10 +22,7 @@ object FileHelper {
                     }
                 } else {
                     Log.d("FileHelper","Input List not null")
-//                    fileWriter.use {
-//                        it.write("")
-//                        Log.d("FileHelper","File cleared")
-//                    }
+
                     var counter = 0
                     Log.d("FileHelper","List size: ${data.size}")
 
